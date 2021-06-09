@@ -16,16 +16,26 @@
  ...
  ...
  
---------------------------------------------- 
-
-//*/
+ --------------------------------------------- 
  
+ //*/
+
+
 void setup() {
- size(500, 400);
- 
-}
- 
-void draw() {
+  //screen set up
+  size(1200, 800);
+  background(255);
 
-  
+  //for high quality text 
+  pixelDensity(displayDensity());
+}
+
+void draw() {    
+  loginScene();
+}
+
+
+void keyTyped() {
+  //
+  message += key;
 }
