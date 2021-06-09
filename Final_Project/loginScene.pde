@@ -6,7 +6,7 @@ PFont Avenir;
 //ArryList to put it the id/password values
 ArrayList<TEXTBOX> textboxes = new ArrayList<TEXTBOX>();
 //not logged in
-boolean logged = false;
+String logged = "init";
 
 void textboxSetup() {
   TEXTBOX id = new TEXTBOX();
@@ -73,10 +73,12 @@ void loginScene() {
   }
 
   //if password and id is correct, patient scene
-  if (logged) {
+  if (logged == "success") {
     fill(250, 250, 250);
     text("YOU ARE LOGGED IN!", (width - textWidth("YOU ARE LOGGED IN")) / 2, 230);
-  } else {text("fail", (width - textWidth("fail")) / 2, 230);}
+  } else if (logged == "fail") {
+    text("fail", (width - textWidth("fail")) / 2, 230);
+  }
 }
 
 void mousePressed() {
@@ -89,12 +91,12 @@ void mousePressed() {
 void check() {
   if (textboxes.get(0).Text.equals("patient")) {
     if (textboxes.get(1).Text.equals("alz")) {
-      logged = true;
+      logged = "success";
     } else {
-      logged = false;
+      logged = "fail";
     }
   } else {
-    logged = false;
+    logged = "fail";
   }
 }
 
@@ -103,6 +105,6 @@ void keyPressed() {
     //get the value entered and check if it is correct
     if (t.KEYPRESSED(key, (int)keyCode)) {
       check();
-    } 
+    }
   }
 }
