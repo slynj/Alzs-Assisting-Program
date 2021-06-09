@@ -1,3 +1,9 @@
+/*
+from @mitkonikov
+https://github.com/mitkonikov/Processing/blob/master/Text_Box/TEXTBOX.pde
+[some parts of the class are modified and custmized by LYN JEONG]
+*/
+
 public class TEXTBOX {
    public float X = 0, Y = 0, H = 35, W = 200;
    public int TEXTSIZE = 24;
