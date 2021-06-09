@@ -28,6 +28,9 @@ void setup() {
 
   //for high quality text 
   pixelDensity(displayDensity());
+  
+  //textbox initial setup
+  textboxSetup();
 }
 
 void draw() {    
@@ -37,5 +40,5 @@ void draw() {
 
 void keyTyped() {
   //
-  message += key;
+  //id += key;
 }
