@@ -39,7 +39,7 @@ void loginScene() {
   
   //background box (base)
   rectMode(CENTER);
-  fill(221);
+  fill(#efece5);
   noStroke();
   rect(baseX, baseY, baseW, baseH, 30);
   
