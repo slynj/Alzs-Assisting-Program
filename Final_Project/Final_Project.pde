@@ -21,6 +21,9 @@
  //*/
 
 
+String program;
+
+
 void setup() {
   //screen set up
   size(1200, 800);
@@ -28,17 +31,18 @@ void setup() {
 
   //for high quality text 
   pixelDensity(displayDensity());
-  
+
   //textbox initial setup
   textboxSetup();
+
+  //variable assigning
+  program = "patient";
 }
 
-void draw() {    
-  loginScene();
-}
-
-
-void keyTyped() {
-  //
-  //id += key;
+void draw() {  
+  if (program == "login") {
+    loginScene();
+  } else if ( program == "patient") {
+    patientScene();
+  }
 }

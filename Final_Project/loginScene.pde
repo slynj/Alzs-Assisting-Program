@@ -77,8 +77,7 @@ void loginScene() {
 
   //if password and id is correct, patient scene
   if (logged == "success") {
-    fill(250, 250, 250);
-    text("YOU ARE LOGGED IN!", (width - textWidth("YOU ARE LOGGED IN")) / 2, 230);
+    program = "patient";
   } else if (logged == "fail") {
     fill(#BF5443);
     text("wrong ID or PASSWORD, please try again", (width - textWidth("wrong ID or PASSWORD, please try again")) / 2, baseY + baseW/6);
@@ -93,13 +92,13 @@ void mousePressed() {
 
 //checks if the id and password is correct. if it is, logged is true
 void check() {
-  if (textboxes.get(0).Text.equals("patient")) {
-    if (textboxes.get(1).Text.equals("alz")) {
-      logged = "success";
-    } else {
-      logged = "fail";
-    }
-  } else {
+  
+  if (textboxes.get(0).Text.equals("patient") && textboxes.get(1).Text.equals("alz")) {
+    logged = "success";
+  } else if (textboxes.get(0).Text.equals("doctor") && textboxes.get(1).Text.equals("alz0523")) {
+    logged = "success";
+  }
+  else {
     logged = "fail";
   }
 }
