@@ -17,7 +17,7 @@ void textboxSetup() {
 
   //password textbox
   TEXTBOX password = new TEXTBOX(width/2, height/2 + height*0.66/20, width*0.66/2.5, height*0.66/10);
-  
+
   //add objects
   textboxes.add(id);
   textboxes.add(password);
@@ -30,26 +30,26 @@ void loginScene() {
   AvenirUL = loadFont("AvenirNext-UltraLight-48.vlw");
   AvenirI = loadFont("AvenirNext-Italic-48.vlw");
   AvenirR = loadFont("AvenirNext-Regular-48.vlw");
-  
-  //base x, y, width, height variables
+
+  //base rectangel X, Y, Width, and Height. (benchmark points)
   float baseX = width/2;
   float baseY = height/2;
   float baseW = width*0.66;
   float baseH = height*0.66;
-  
+
   //background box (base)
   rectMode(CENTER);
   fill(#efece5);
   noStroke();
   rect(baseX, baseY, baseW, baseH, 30);
-  
+
   //the title text
   textFont(SDGothic);
   textSize(height/10);
   textAlign(CENTER);
   fill(0);
   text("Alz's", baseX, baseY - baseW/6);
-  
+
   //ID and PASSWORD text
   textFont(AvenirUL);
   textAlign(RIGHT);
@@ -57,7 +57,7 @@ void loginScene() {
   fill(0);
   text("ID:  ", baseX, baseY - baseH/35);
   text("PASSWORD:  ", baseX, baseY + baseH/8);
-  
+
   //Help button
   rectMode(CENTER);
   fill(255);
@@ -67,7 +67,7 @@ void loginScene() {
   fill(0);
   textSize(height/26);
   text("HELP", baseX, baseY + baseH/2.6);
-  
+
 
   //draws the text boxes
   for (TEXTBOX t : textboxes) {  //enhanced for loop for arrays
@@ -76,8 +76,10 @@ void loginScene() {
   }
 
   //if password and id is correct, patient scene
-  if (logged == "success") {
+  if (logged == "patientSuccess") {
     program = "patient";
+  } else if (logged == "doctorSuccess") {
+    program = "doctor";
   } else if (logged == "fail") {
     fill(#BF5443);
     text("wrong ID or PASSWORD, please try again", (width - textWidth("wrong ID or PASSWORD, please try again")) / 2, baseY + baseW/6);
@@ -92,13 +94,12 @@ void mousePressed() {
 
 //checks if the id and password is correct. if it is, logged is true
 void check() {
-  
+
   if (textboxes.get(0).Text.equals("patient") && textboxes.get(1).Text.equals("alz")) {
-    logged = "success";
+    logged = "patientSuccess";
   } else if (textboxes.get(0).Text.equals("doctor") && textboxes.get(1).Text.equals("alz0523")) {
-    logged = "success";
-  }
-  else {
+    logged = "doctorSuccess";
+  } else {
     logged = "fail";
   }
 }

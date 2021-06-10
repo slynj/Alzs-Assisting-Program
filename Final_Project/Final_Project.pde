@@ -23,7 +23,6 @@
 
 String program;
 
-
 void setup() {
   //screen set up
   size(1200, 800);
@@ -39,10 +38,14 @@ void setup() {
   program = "login";  //program state is login
 }
 
-void draw() {  
+void draw() {    
   if (program == "login") {
+
+    //loginScene funciton that sets the log in page up (buttons, graphics, shapes ...)
     loginScene();
   } else if ( program == "patient") {
     patientScene();
+  }else if ( program == "doctor") {
+    text("doctor", 0, 0);
   }
 }
