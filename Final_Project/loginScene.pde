@@ -1,17 +1,14 @@
-String id = "";
-String password = "";
-PFont SDGothic;
-PFont AvenirUL;
-PFont AvenirR;
-PFont AvenirI;
+//String id = "";
+//String password = "";
 
 //ArryList to put it the id/password values
-ArrayList<TEXTBOX> textboxes = new ArrayList<TEXTBOX>();
+ArrayList<TEXTBOX>   textboxes = new ArrayList<TEXTBOX>();
 //not logged in
 String logged = "init";
 
 //sets up the textboxes
 void textboxSetup() {
+
   //id text box
   TEXTBOX id = new TEXTBOX(width/2, height/2 - height*0.66/10, width*0.66/2.5, height*0.66/10);
 
@@ -25,11 +22,9 @@ void textboxSetup() {
 
 //graphics (buttons, texts, text boxes ...)
 void loginScene() {
-  //fonts set up
-  SDGothic = loadFont("AppleSDGothicNeo-Heavy-48.vlw");
-  AvenirUL = loadFont("AvenirNext-UltraLight-48.vlw");
-  AvenirI = loadFont("AvenirNext-Italic-48.vlw");
-  AvenirR = loadFont("AvenirNext-Regular-48.vlw");
+
+
+  background(255);
 
   //base rectangel X, Y, Width, and Height. (benchmark points)
   float baseX = width/2;
@@ -44,25 +39,24 @@ void loginScene() {
   rect(baseX, baseY, baseW, baseH, 30);
 
   //the title text
-  textFont(SDGothic);
-  textSize(height/10);
+  font(SDGothic, height/10);
   textAlign(CENTER);
   fill(0);
   text("Alz's", baseX, baseY - baseW/6);
 
   //ID and PASSWORD text
-  textFont(AvenirUL);
+  font(AvenirUL, height/16);
   textAlign(RIGHT);
-  textSize(height/16);
   fill(0);
   text("ID:  ", baseX, baseY - baseH/35);
   text("PASSWORD:  ", baseX, baseY + baseH/8);
 
-  //Help button
+  //Help button rect
   rectMode(CENTER);
   fill(255);
   noStroke();
   rect(baseX, baseY + baseH/2.6, baseW/6, baseH/10, 100);
+  //Help button text
   textAlign(CENTER, CENTER);
   fill(0);
   textSize(height/26);
@@ -86,19 +80,18 @@ void loginScene() {
   }
 }
 
-void mousePressed() {
-  for (TEXTBOX t : textboxes) {
-    t.PRESSED(mouseX, mouseY);
-  }
-}
 
 //checks if the id and password is correct. if it is, logged is true
 void check() {
 
   if (textboxes.get(0).Text.equals("patient") && textboxes.get(1).Text.equals("alz")) {
     logged = "patientSuccess";
+    textboxes.get(0).Text = "";
+    textboxes.get(1).Text = "";
   } else if (textboxes.get(0).Text.equals("doctor") && textboxes.get(1).Text.equals("alz0523")) {
     logged = "doctorSuccess";
+    textboxes.get(0).Text = "";
+    textboxes.get(1).Text = "";
   } else {
     logged = "fail";
   }

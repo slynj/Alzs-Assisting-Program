@@ -20,18 +20,32 @@
  
  //*/
 
-
+//prgram state
 String program;
+//fonts
+PFont SDGothic;
+PFont AvenirUL;
+PFont AvenirR;
+PFont AvenirI;
+//determind if user clicked or not
+boolean click;
 
 void setup() {
   //screen set up
   size(1200, 800);
-  background(255);
+  //size(300, 200);
+
+
+  //fonts set up and import
+  SDGothic = loadFont("AppleSDGothicNeo-Heavy-48.vlw");
+  AvenirUL = loadFont("AvenirNext-UltraLight-48.vlw");
+  AvenirI = loadFont("AvenirNext-Italic-48.vlw");
+  AvenirR = loadFont("AvenirNext-Regular-48.vlw");
 
   //for high quality text 
   pixelDensity(displayDensity());
 
-  //textbox initial setup
+  //textbox for the texbox class — initial setup
   textboxSetup();
 
   //variable assigning
@@ -40,12 +54,31 @@ void setup() {
 
 void draw() {    
   if (program == "login") {
-
-    //loginScene funciton that sets the log in page up (buttons, graphics, shapes ...)
+    //loginScene funciton that sets the log in page up (buttons, graphics, shapes ..
     loginScene();
-  } else if ( program == "patient") {
+  }
+  
+  else if ( program == "patient") {
     patientScene();
-  }else if ( program == "doctor") {
+  }
+  
+  else if ( program == "doctor") {
     text("doctor", 0, 0);
   }
+}
+
+void mousePressed() {
+  //always running
+  //click = true;
+  
+  //only if its login state
+  if (program == "login") {
+    for (TEXTBOX t : textboxes) {
+      t.PRESSED(mouseX, mouseY);
+    }
+  }
+}
+
+void mouseReleased() {
+  click = false;
 }
