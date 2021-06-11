@@ -23,11 +23,3 @@ void buttonHover(float x, float y, float w, float h, int colour, int r) {
     hover = true;
   } else {hover = false;}
 }
-
-//without the rectangle
-void textHover (float x, float y, float w, float h) {
-  if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-    //change hover to true
-    hover = true;
-  } else {hover = false;}
-}
