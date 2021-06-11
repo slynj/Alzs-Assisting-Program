@@ -9,7 +9,9 @@ void font(PFont s, float f) {
 }
 
 //hover function
-void hover(float x, float y, float w, float h, int colour, int r) {
+void buttonHover(float x, float y, float w, float h, int colour, int r) {
+  //draw rect
+  rect(x, y, w, h, r);
   //collision detection
   if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
     //change colour
@@ -17,6 +19,14 @@ void hover(float x, float y, float w, float h, int colour, int r) {
     //redraw rectangle
     rectMode(CORNER);
     rect(x, y, w, h, r);
+    //change hover to true
+    hover = true;
+  } else {hover = false;}
+}
+
+//without the rectangle
+void textHover (float x, float y, float w, float h) {
+  if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
     //change hover to true
     hover = true;
   } else {hover = false;}

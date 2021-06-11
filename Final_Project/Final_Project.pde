@@ -27,6 +27,8 @@ PFont SDGothic;
 PFont AvenirUL;
 PFont AvenirR;
 PFont AvenirI;
+PFont OratorR;
+
 //determind if user clicked or not
 boolean click;
 
@@ -41,6 +43,7 @@ void setup() {
   AvenirUL = loadFont("AvenirNext-UltraLight-48.vlw");
   AvenirI = loadFont("AvenirNext-Italic-48.vlw");
   AvenirR = loadFont("AvenirNext-Regular-48.vlw");
+  OratorR = loadFont("OratorStd-48.vlw");
 
   //for high quality text 
   pixelDensity(displayDensity());
@@ -49,7 +52,7 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "login";  //program state is login
+  program = "patient";  //program state is login
 }
 
 void draw() {    
