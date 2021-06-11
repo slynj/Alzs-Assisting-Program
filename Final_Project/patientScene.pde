@@ -5,10 +5,24 @@ String headerState = "init";
 //logged in as patient
 void patientScene() {
 
-  patientInit();      //initial set up for patient scene
+  patientInit();      //graphic set up for patient scene
   signoutButton();    //button for signout (goes back to login scene)
   headerButton();     //header buttons (home, assesment, game, contact, help) hover feature + changes header state
-  
+
+  //header state check (changes the page)
+  if (headerState == "home") {                    //clicked home
+    clickHome();
+  } else if (headerState == "assessment") {        //clicked assessment
+    clickAssessment();
+  } else if (headerState == "game") {                  //clicked game
+    clickGame();
+  } else if (headerState == "contact") {                    //clicked contact
+    clickContact();
+  } else if (headerState == "help") {                      //clicked help
+    clickHelp(); 
+  } else if (headerState == "init") {                    //first logged in
+    startPage();
+  }
 }
 
 //initial set up for patient scene
@@ -90,6 +104,7 @@ void headerButton() {
       text("home", headerX + headerW/2, rectY);
       if (mousePressed == true) {
         headerState = "home";
+        //clickHome();
       }
     } else if (mouseX > x1 && mouseX < x1 + headerW) {
       fill(0);
@@ -117,4 +132,46 @@ void headerButton() {
       }
     }
   }
+}
+
+//when home is clicked
+void clickHome() {
+  textAlign(CENTER);
+  fill(0);
+  text("What is Alzheimer's Disease?", width/2, height/2);
+}
+
+//when assessment is clicked
+void clickAssessment() {
+  textAlign(CENTER);
+  fill(0);
+  text("assess", width/2, height/2);
+}
+
+//when game is clicked
+void clickGame() {
+  textAlign(CENTER);
+  fill(0);
+  text("game", width/2, height/2);
+}
+
+//when contact is clicked
+void clickContact() {
+  textAlign(CENTER);
+  fill(0);
+  text("contact", width/2, height/2);
+}
+
+//when help is clicked
+void clickHelp() {
+  textAlign(CENTER);
+  fill(0);
+  text("help", width/2, height/2);
+}
+
+//when user first logs in
+void startPage() {
+  textAlign(CENTER);
+  fill(0);
+  text("welcome", width/2, height/2);
 }

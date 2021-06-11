@@ -23,7 +23,6 @@ void textboxSetup() {
 //graphics (buttons, texts, text boxes ...)
 void loginScene() {
 
-
   background(255);
 
   //base rectangel X, Y, Width, and Height. (benchmark points)

@@ -52,7 +52,7 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "patient";  //program state is login
+  program = "login";  //program state is login
 }
 
 void draw() {    
