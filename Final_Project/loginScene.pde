@@ -84,15 +84,26 @@ void loginScene() {
 //checks if the id and password is correct. if it is, logged is true
 void check() {
 
+  //if patient id and password;
   if (textboxes.get(0).Text.equals("patient") && textboxes.get(1).Text.equals("alz")) {
+    //logged status is patientSucess (changes program state to patient)
     logged = "patientSuccess";
+    //text box reset (erases the text and the text length(
     textboxes.get(0).Text = "";
     textboxes.get(1).Text = "";
+    textboxes.get(0).TextLength = 0;
+    textboxes.get(1).TextLength = 0;
+    //if doctor id and password;
   } else if (textboxes.get(0).Text.equals("doctor") && textboxes.get(1).Text.equals("alz0523")) {
+    //logged status is doctorSuccess (changes program state to doctor)
     logged = "doctorSuccess";
+    //text box reset (erases the text and the text length(
     textboxes.get(0).Text = "";
     textboxes.get(1).Text = "";
+    textboxes.get(0).TextLength = 0;
+    textboxes.get(1).TextLength = 0;
   } else {
+    //else if id and password is wrong, change program state to fail (prints text)
     logged = "fail";
   }
 }

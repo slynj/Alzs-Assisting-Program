@@ -22,18 +22,24 @@ void patientScene() {
   fill(#CBC5BD);
   rect(width*0.87, height/43, width/10, height/40, 10);
 
-  if (mouseX > width*0.87 && mouseX < width*0.87 + width/10 && mouseY > height/43 && mouseY < height/43 + height/40) {
-    fill(0);
-    rect(width*0.87, height/43, width/10, height/40, 10);
-    if (mousePressed == true) {
-      logged = "init";
-      program = "login";
-    }
-  }
-  //hover(width*0.87, height/43, width/10, height/40, 0, 10);
-  //if (hover == true && click == true) {
-  //  program = "login";
+  //if (mouseX > width*0.87 && mouseX < width*0.87 + width/10 && mouseY > height/43 && mouseY < height/43 + height/40) {
+  //  fill(0);
+  //  rect(width*0.87, height/43, width/10, height/40, 10);
+  //  if (mousePressed == true) {
+  //    logged = "init";
+  //    program = "login";
+  //  }
   //}
+
+  //hover functions changes the colour when hovered
+  hover(width*0.87, height/43, width/10, height/40, 0, 10);
+  //if mouse hovered and mouse is pressed, button is clicked
+  if (hover == true && mousePressed == true) {
+    //reset the logged variable to init(it was previously success)
+    logged = "init";
+    //change the program state to login
+    program = "login";
+  }
 
   //sign out text
   font(AvenirI, height/50);
