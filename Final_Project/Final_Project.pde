@@ -33,6 +33,7 @@ PFont ChapR;
 //images
 PImage Grandpa;
 PImage Hospital;
+PImage Welcome;
 
 
 //determind if user clicked or not
@@ -56,6 +57,7 @@ void setup() {
   //image import
   Grandpa = loadImage("grandpa.png");
   Hospital = loadImage("hospital.png");
+  Welcome = loadImage("welcome.png");
 
   //for high quality text 
   pixelDensity(displayDensity());

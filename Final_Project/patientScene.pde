@@ -154,7 +154,6 @@ void backgroundC() {
 
 //when home is clicked
 void clickHome() {
-  
   //CONTENT
   font(ChapR, height/15);  //font & text size for title
   textAlign(CENTER);
@@ -216,7 +215,12 @@ void clickHelp() {
 
 //when user first logs in
 void startPage() {
-  textAlign(CENTER);
-  fill(0);
-  text("welcome", width/2, height/2);
+  //welcome image
+  imageMode(CENTER);  //coordinates from the image centre
+  Welcome.resize(0, height/6);  //resize image
+  image(Welcome, width/2, height/3.5);  //draw image
+
+  //hospital image
+  Hospital.resize(width - width/50, 0);  //resize image
+  image(Hospital, width/2, height/6.7 + width/100 + height-height/6.7 - width/50 - Hospital.height/2);  //draw image
 }
