@@ -30,7 +30,10 @@ PFont AvenirI;
 PFont OratorR;
 PFont SDLight;
 PFont ChapR;
+//images
 PImage Grandpa;
+PImage Hospital;
+
 
 //determind if user clicked or not
 boolean click;
@@ -52,6 +55,7 @@ void setup() {
   
   //image import
   Grandpa = loadImage("grandpa.png");
+  Hospital = loadImage("hospital.png");
 
   //for high quality text 
   pixelDensity(displayDensity());

@@ -1,6 +1,6 @@
 
 //header state (home, assesment, game, contact, help)
-String headerState = "home";
+String headerState = "init";
 
 //logged in as patient
 void patientScene() {
@@ -8,6 +8,7 @@ void patientScene() {
   patientInit();      //graphic set up for patient scene
   signoutButton();    //button for signout (goes back to login scene)
   headerButton();     //header buttons (home, assesment, game, contact, help) hover feature + changes header state
+  backgroundC();       //bakcground (ivory rect)
 
   //header state check (changes the page)
   if (headerState == "home") {                    //clicked home
@@ -143,11 +144,18 @@ void headerButton() {
   }
 }
 
-//when home is clicked
-void clickHome() {
+
+void backgroundC() {
+  //background rect
   fill(#efece5);
   rect(width/100, height/6.7 + width/100, width - width/50, height-height/6.7 - width/50, 5);
+}
+
+
+//when home is clicked
+void clickHome() {
   
+  //CONTENT
   font(ChapR, height/15);  //font & text size for title
   textAlign(CENTER);
   fill(0);  //colour is black
@@ -161,8 +169,21 @@ void clickHome() {
     +  "- It can seriously affect a person’s ability to carry out daily activities.";
   text(s, width/2.5, height/3, width*0.57, height*0.66);  //draw text
   imageMode(CENTER);  //image coordinate based on the center of the image
-  Grandpa.resize(0,int(height/2.1));  //image resize
-  image(Grandpa,width/5, height/1.75);  //draw image
+  Grandpa.resize(0, int(height/2.1));  //image resize
+  image(Grandpa, width/5, height/1.75);  //draw image
+
+  //url
+  String url = "https://www.cdc.gov/aging/aginginfo/alzheimers.htm#:~:text=Alzheimer's%20disease%20is%20the%20most,thought%2C%20memory%2C%20and%20language.";  //link
+  fill(#5D79B2);  //blue 
+  textAlign(CENTER, CENTER);   //text align
+  textSize(width/80);  //text size
+  if (mouseY > height*0.914 && mouseY < height*0.914 + height/30 && mouseX > width/12.6 && mouseX < width/12.6 + textWidth(url)) {  //collision detection
+    fill(#3D5486);    //dark blue
+    if (mousePressed == true) {
+      link(url);
+    }
+  }
+  text(url, width/2, height*0.93);  //draw the text
 }
 
 //when assessment is clicked
