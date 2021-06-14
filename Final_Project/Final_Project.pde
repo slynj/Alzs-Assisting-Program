@@ -28,6 +28,9 @@ PFont AvenirUL;
 PFont AvenirR;
 PFont AvenirI;
 PFont OratorR;
+PFont SDLight;
+PFont ChapR;
+PImage Grandpa;
 
 //determind if user clicked or not
 boolean click;
@@ -40,10 +43,15 @@ void setup() {
 
   //fonts set up and import
   SDGothic = loadFont("AppleSDGothicNeo-Heavy-48.vlw");
+  SDLight = loadFont("AppleSDGothicNeo-Light-48.vlw");
   AvenirUL = loadFont("AvenirNext-UltraLight-48.vlw");
   AvenirI = loadFont("AvenirNext-Italic-48.vlw");
   AvenirR = loadFont("AvenirNext-Regular-48.vlw");
   OratorR = loadFont("OratorStd-48.vlw");
+  ChapR = loadFont("ChaparralPro-Regular-48.vlw");
+  
+  //image import
+  Grandpa = loadImage("grandpa.png");
 
   //for high quality text 
   pixelDensity(displayDensity());
@@ -52,20 +60,16 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "login";  //program state is login
+  program = "patient";  //program state is login
 }
 
 void draw() {    
   if (program == "login") {
     //loginScene funciton that sets the log in page up (buttons, graphics, shapes ..
     loginScene();
-  }
-  
-  else if ( program == "patient") {
+  } else if ( program == "patient") {
     patientScene();
-  }
-  
-  else if ( program == "doctor") {
+  } else if ( program == "doctor") {
     text("doctor", 0, 0);
   }
 }
@@ -73,7 +77,7 @@ void draw() {
 void mousePressed() {
   //always running
   //click = true;
-  
+
   //only if its login state
   if (program == "login") {
     for (TEXTBOX t : textboxes) {

@@ -1,6 +1,6 @@
 
 //header state (home, assesment, game, contact, help)
-String headerState = "init";
+String headerState = "home";
 
 //logged in as patient
 void patientScene() {
@@ -16,10 +16,10 @@ void patientScene() {
     clickAssessment();
   } else if (headerState == "game") {                  //clicked game
     clickGame();
-  } else if (headerState == "contact") {                    //clicked contact
-    clickContact();
+  } else if (headerState == "resources") {                    //clicked contact
+    clickResources();
   } else if (headerState == "help") {                      //clicked help
-    clickHelp(); 
+    clickHelp();
   } else if (headerState == "init") {                    //first logged in
     startPage();
   }
@@ -34,6 +34,15 @@ void patientInit() {
   textAlign(LEFT, TOP);
   fill(#32bdba);
   text("Alz's", width/100, width/100);
+
+  //logo button feature
+  if (mouseY > width/100 && mouseY < width/100 + height/25 && mouseX > width/100 && mouseX < width/100 + textWidth("Alz's")) {
+    fill(#22A7A4);
+    text("Alz's", width/100, width/100);
+    if (mousePressed == true) {
+      headerState = "init";
+    }
+  }
 
   //header rect (besides the logo)
   rectMode(RIGHT);
@@ -66,7 +75,7 @@ void signoutButton() {
   font(AvenirI, height/50);
   textAlign(CENTER, TOP);
   fill(255);
-  text("sign out", width*0.87 + width/20, height/43);
+  text("sign out", width*0.87 + width/20, height/40);
 }
 
 //header buttons (home, assesment, game, contact, help)
@@ -94,7 +103,7 @@ void headerButton() {
   text("home", headerX + headerW/2, rectY);
   text("assessment", x1 + headerW/2, rectY);
   text("game", x2 + headerW/2, rectY);
-  text("contact", x3 + headerW/2, rectY);
+  text("resources", x3 + headerW/2, rectY);
   text("help", x4 + headerW/2, rectY);
 
   //if mouse hovers, change text colour (header text)
@@ -120,9 +129,9 @@ void headerButton() {
       }
     } else if (mouseX > x3 && mouseX < x3 + headerW) {
       fill(0);
-      text("contact", x3 + headerW/2, rectY);
+      text("resources", x3 + headerW/2, rectY);
       if (mousePressed == true) {
-        headerState = "contact";
+        headerState = "resources";
       }
     } else if (mouseX > x4 && mouseX < x4 + headerW) {
       fill(0);
@@ -136,9 +145,24 @@ void headerButton() {
 
 //when home is clicked
 void clickHome() {
+  fill(#efece5);
+  rect(width/100, height/6.7 + width/100, width - width/50, height-height/6.7 - width/50, 5);
+  
+  font(ChapR, height/15);  //font & text size for title
   textAlign(CENTER);
-  fill(0);
-  text("What is Alzheimer's Disease?", width/2, height/2);
+  fill(0);  //colour is black
+  text("What is Alzheimer's Disease?", width/2, height/4); //title
+  font(SDLight, height/30);  //font & text size for content
+  textAlign(LEFT, CORNER);
+  textLeading(40);  // Set leading to 100
+  String s = "- Alzheimer’s disease is the most common type of dementia.\n\n"  //content
+    + "- It is a progressive disease beginning with mild memory loss and possibly leading to loss of the ability to carry on a conversation and respond to the environment.\n\n"
+    + "- Alzheimer’s disease involves parts of the brain that control thought, memory, and language.\n\n"
+    +  "- It can seriously affect a person’s ability to carry out daily activities.";
+  text(s, width/2.5, height/3, width*0.57, height*0.66);  //draw text
+  imageMode(CENTER);  //image coordinate based on the center of the image
+  Grandpa.resize(0,int(height/2.1));  //image resize
+  image(Grandpa,width/5, height/1.75);  //draw image
 }
 
 //when assessment is clicked
@@ -156,10 +180,10 @@ void clickGame() {
 }
 
 //when contact is clicked
-void clickContact() {
+void clickResources() {
   textAlign(CENTER);
   fill(0);
-  text("contact", width/2, height/2);
+  text("resources", width/2, height/2);
 }
 
 //when help is clicked
