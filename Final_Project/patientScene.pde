@@ -1,5 +1,5 @@
 
-//header state (init, home, assesment, game, resources, help)
+//header state (init, home, assesment, game, resources, help, quiz, game1, game2)
 String headerState = "assessment";
 
 //logged in as patient
@@ -21,6 +21,8 @@ void patientScene() {
     clickResources();
   } else if (headerState == "help") {                      //clicked help
     clickHelp();
+  } else if (headerState == "quiz") {                    //start self assess quiz logged in
+    quiz();
   } else if (headerState == "init") {                    //first logged in
     startPage();
   }
@@ -221,7 +223,7 @@ void clickAssessment() {
     }
   }
   text(url, width/2, height*0.93);  //draw the text
-  
+
   float startX = width/2.25;
   float startY = height*0.78;
   float startW = width*0.66;
@@ -233,13 +235,22 @@ void clickAssessment() {
   fill(255);
   rect(startX, startY, startW/6, startH/10, 100);
 
-  //help button hover
+  //start button hover
   buttonHover(startX, startY, startW/6, startH/10, #C9C3B7, 100);  //funciton in graphicFunctions (changes the button colour and makes hover = true when hovered)
+  if (hover == true && mousePressed == true) {
+    headerState = "quiz";
+  }
 
-  //Help button text
+  //start button text
   textAlign(CENTER, CENTER);
   font(AvenirUL, height/26, 0);
   text("START", startX*1.12, startY + startH/20);
+}
+
+void quiz() {
+  textAlign(CENTER);
+  fill(0);
+  text("game", width/2, height/2);
 }
 
 //when game is clicked
