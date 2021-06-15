@@ -34,6 +34,9 @@ PFont ChapR;
 PImage Grandpa;
 PImage Hospital;
 PImage Welcome;
+PImage Colouring;
+PImage Card;
+PImage Puzzle;
 
 
 //determind if user clicked or not
@@ -58,6 +61,9 @@ void setup() {
   Grandpa = loadImage("grandpa.png");
   Hospital = loadImage("hospital.png");
   Welcome = loadImage("welcome.png");
+  Colouring = loadImage("colouring.png");
+  Card = loadImage("card.png");
+  Puzzle = loadImage("puzzle.png");
 
   //for high quality text 
   pixelDensity(displayDensity());
