@@ -38,15 +38,13 @@ void loginScene() {
   rect(baseX, baseY, baseW, baseH, 30);
 
   //the title text
-  font(SDGothic, height/10);
+  font(SDGothic, height/10, 0);
   textAlign(CENTER);
-  fill(0);
   text("Alz's", baseX, baseY - baseW/6);
 
   //ID and PASSWORD text
-  font(AvenirUL, height/16);
+  font(AvenirUL, height/16, 0);
   textAlign(RIGHT);
-  fill(0);
   text("ID:  ", baseX, baseY - baseH/35);
   text("PASSWORD:  ", baseX, baseY + baseH/8);
 
@@ -76,11 +74,10 @@ void loginScene() {
     float helpH = height/2.4;
 
     rect(helpX, helpY, helpW, helpH, 30);
-    font(OratorR, helpH/6);
+    font(OratorR, helpH/6, 0);
     textAlign(CENTER, CENTER);
-    fill(0);
     text("login info", helpX, helpY-helpH/3);
-    font(SDLight, helpH/15);
+    font(SDLight, helpH/15, 0);
     textLeading(helpW/20);  // Set leading to 40 (when screen is 1200 by 800)
     text("if you are a patient please use:\nID: patient    password: alz\n\n"
       +"if you are a doctor please use:\nID: doctor    password: alz0523", helpX, helpY + helpH/20);
@@ -88,8 +85,7 @@ void loginScene() {
 
   //Help button text
   textAlign(CENTER, CENTER);
-  fill(0);
-  font(AvenirUL, height/26);
+  font(AvenirUL, height/26, 0);
   text("HELP", baseX, baseY + baseH/2.6);
 
   //if password and id is correct, patient scene

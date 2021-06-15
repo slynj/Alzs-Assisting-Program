@@ -72,7 +72,7 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "login";  //program state is login
+  program = "patient";  //program state is login
 }
 
 void draw() {    

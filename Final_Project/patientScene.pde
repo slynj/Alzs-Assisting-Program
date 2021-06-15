@@ -1,6 +1,6 @@
 
 //header state (init, home, assesment, game, resources, help)
-String headerState = "init";
+String headerState = "assessment";
 
 //logged in as patient
 void patientScene() {
@@ -31,9 +31,8 @@ void patientInit() {
   background(255);
 
   //logo text
-  font(SDGothic, height/20);  //font funtion deteminds font and text size (in graphicFunctions tab)
+  font(SDGothic, height/20, #32bdba);  //font funtion deteminds font, text size, and colour (in graphicFunctions tab)
   textAlign(LEFT, TOP);
-  fill(#32bdba);
   text("Alz's", width/100, width/100);
 
   //logo button feature
@@ -74,9 +73,8 @@ void signoutButton() {
   }
 
   //sign out text
-  font(AvenirI, height/50);
+  font(AvenirI, height/50, 255);
   textAlign(CENTER, TOP);
-  fill(255);
   text("sign out", width*0.87 + width/20, height/40);
 }
 
@@ -97,8 +95,7 @@ void headerButton() {
   float x4 = x3 + widthInc;
 
   //text setup
-  fill(255);
-  font(OratorR, height/20);
+  font(OratorR, height/20, 255);
   textAlign(CENTER, CENTER);
 
   //header text
@@ -155,11 +152,10 @@ void backgroundC() {
 //when home is clicked
 void clickHome() {
   //CONTENT
-  font(ChapR, height/15);  //font & text size for title
+  font(ChapR, height/15, 0);  //font & text size & colour for title
   textAlign(CENTER);
-  fill(0);  //colour is black
   text("What is Alzheimer's Disease?", width/2, height/3.5); //title
-  font(SDLight, height/30);  //font & text size for content
+  font(SDLight, height/30, 0);  //font & text size for content
   textAlign(LEFT, CORNER);
   textLeading(width/20);  // Set leading to 40 (when screen is 1200 by 800)
   String s = "- Alzheimer’s disease is the most common type of dementia.\n\n"  //content
@@ -187,9 +183,44 @@ void clickHome() {
 
 //when assessment is clicked
 void clickAssessment() {
+  //symptoms text in array — [0] is left column, [1] is right column
+  String symptoms[] = {"Symptoms may include:\n\n"
+    + "- Increased memory loss and confusion.\n"
+    + "- Inability to learn new things.\n"
+    + "- Difficulty with language and problems with reading,\n    writing, and working with numbers.",
+    "\n\n- Difficulty organizing thoughts and thinking logically.\n"
+    + "- Shortened attention span.\n"
+    + "- Problems coping with new situations."};
+  
+  //text 
   textAlign(CENTER);
-  fill(0);
-  text("assess", width/2, height/2);
+  font(ChapR, height/15, 0);
+  text("Alzheimer's Assesment Quiz", width/2, height/3.5);
+  font(AvenirI, height/25, #f9ad29);
+  text("BEFORE YOU START:", width/2, height/2.3);
+  font(SDLight, height/30, 0);
+  text("This quiz is not 100% accurate. Please go visit the doctor if you have significant symtoms of Alzheimer's.", width/2, height/2);
+  textSize(height/40);
+  textAlign(LEFT);
+  fill(#50483C);
+  //draw symptoms text
+  text(symptoms[0], width/6.5, height/1.8);
+  text(symptoms[1], width/1.8, height/1.8);
+  
+  //reference link
+  String url = "https://alzheimersprevention.org/alzheimers-info/memory-quiz/";    //refrence link
+  fill(#5D79B2);  //blue 
+  textAlign(CENTER, CENTER);   //text align
+  textSize(width/80);  //text size
+
+  //rect(width/3, height*0.914, textWidth(url), height/30);
+  if (mouseY > height*0.914 && mouseY < height*0.914 + height/30 && mouseX > width/3 && mouseX < width/3 + textWidth(url)) {  //collision detection
+    fill(#3D5486);    //dark blue
+    if (mousePressed == true) {
+      link(url);
+    }
+  }
+  text(url, width/2, height*0.93);  //draw the text
 }
 
 //when game is clicked
@@ -208,9 +239,8 @@ void clickResources() {
   float baseImgY = height/2.5;
 
   //text
-  font(ChapR, height/15);
+  font(ChapR, height/15, 0);
   textAlign(CENTER);
-  fill(0);
   text("Board? Try These Out!", width/2, height/3.5);
 
   //image settings
@@ -232,7 +262,7 @@ void clickResources() {
   resourceButton(img3X, puzzleLink);
   image(Puzzle, img3X, baseImgY);  //puzzle image
 
-  font(SDLight, height/30);
+  font(SDLight, height/30, 0);
   //titles
   String s1 = "colouring page";
   String s2 = "card game/sudoku";

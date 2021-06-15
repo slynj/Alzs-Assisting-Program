@@ -2,10 +2,11 @@
 boolean hover;
 
 //font function
-void font(PFont s, float f) {
+void font(PFont s, float f, int colour) {
   //font kind and text size
   textFont(s);
   textSize(f);
+  fill(colour);
 }
 
 //hover function
