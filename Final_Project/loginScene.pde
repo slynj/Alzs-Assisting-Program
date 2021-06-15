@@ -51,16 +51,26 @@ void loginScene() {
   text("PASSWORD:  ", baseX, baseY + baseH/8);
 
   //Help button rect
-  rectMode(CENTER);
-  fill(255);
+  rectMode(CORNER);
   noStroke();
-  rect(baseX, baseY + baseH/2.6, baseW/6, baseH/10, 100);
+  //rect(baseX, baseY + baseH/2.6, baseW/6, baseH/10, 100);
+  fill(255);
+  rect(width/2.25, height*0.72, baseW/6, baseH/10, 100);
+
+
+  //help button hover & click feature
+  buttonHover(width/2.25, height*0.72, baseW/6, baseH/10, #C9C3B7, 100);
+  if (hover == true && mousePressed == true) {
+    fill(200);
+    rect(50, 50, 50, 50);
+  }
+  
+  
   //Help button text
   textAlign(CENTER, CENTER);
   fill(0);
   textSize(height/26);
   text("HELP", baseX, baseY + baseH/2.6);
-
 
   //draws the text boxes
   for (TEXTBOX t : textboxes) {  //enhanced for loop for arrays
