@@ -6,7 +6,7 @@ https://github.com/mitkonikov/Processing/blob/master/Text_Box/TEXTBOX.pde
 
 public class TEXTBOX {
    public float X = 0, Y = 0, H = 35, W = 200;
-   public int TEXTSIZE = 24;
+   public int TEXTSIZE = width/50;
    
    // COLORS
    public color Background = color(#f4f4f4);

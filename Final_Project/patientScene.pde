@@ -161,7 +161,7 @@ void clickHome() {
   text("What is Alzheimer's Disease?", width/2, height/3.5); //title
   font(SDLight, height/30);  //font & text size for content
   textAlign(LEFT, CORNER);
-  textLeading(40);  // Set leading to 100
+  textLeading(width/20);  // Set leading to 40 (when screen is 1200 by 800)
   String s = "- Alzheimer’s disease is the most common type of dementia.\n\n"  //content
     + "- It is a progressive disease beginning with mild memory loss and possibly leading to loss of the ability to carry on a conversation and respond to the environment.\n\n"
     + "- Alzheimer’s disease involves parts of the brain that control thought, memory, and language.\n\n"

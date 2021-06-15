@@ -45,7 +45,7 @@ boolean click;
 void setup() {
   //screen set up
   size(1200, 800);
-  //size(300, 200);
+  //size(600, 400);
 
 
   //fonts set up and import
