@@ -187,11 +187,11 @@ void clickAssessment() {
   String symptoms[] = {"Symptoms may include:\n\n"
     + "- Increased memory loss and confusion.\n"
     + "- Inability to learn new things.\n"
-    + "- Difficulty with language and problems with reading,\n    writing, and working with numbers.",
+    + "- Difficulty with language and problems with reading,\n    writing, and working with numbers.", 
     "\n\n- Difficulty organizing thoughts and thinking logically.\n"
     + "- Shortened attention span.\n"
     + "- Problems coping with new situations."};
-  
+
   //text 
   textAlign(CENTER);
   font(ChapR, height/15, 0);
@@ -206,7 +206,7 @@ void clickAssessment() {
   //draw symptoms text
   text(symptoms[0], width/6.5, height/1.8);
   text(symptoms[1], width/1.8, height/1.8);
-  
+
   //reference link
   String url = "https://alzheimersprevention.org/alzheimers-info/memory-quiz/";    //refrence link
   fill(#5D79B2);  //blue 
@@ -221,6 +221,25 @@ void clickAssessment() {
     }
   }
   text(url, width/2, height*0.93);  //draw the text
+  
+  float startX = width/2.25;
+  float startY = height*0.78;
+  float startW = width*0.66;
+  float startH = height*0.66;  
+
+  //start button
+  rectMode(CORNER);
+  noStroke();
+  fill(255);
+  rect(startX, startY, startW/6, startH/10, 100);
+
+  //help button hover
+  buttonHover(startX, startY, startW/6, startH/10, #C9C3B7, 100);  //funciton in graphicFunctions (changes the button colour and makes hover = true when hovered)
+
+  //Help button text
+  textAlign(CENTER, CENTER);
+  font(AvenirUL, height/26, 0);
+  text("START", startX*1.12, startY + startH/20);
 }
 
 //when game is clicked
