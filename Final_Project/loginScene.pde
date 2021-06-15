@@ -50,6 +50,13 @@ void loginScene() {
   text("ID:  ", baseX, baseY - baseH/35);
   text("PASSWORD:  ", baseX, baseY + baseH/8);
 
+
+  //draws the text boxes
+  for (TEXTBOX t : textboxes) {  //enhanced for loop for arrays
+    textFont(AvenirI);
+    t.DRAW();
+  }
+
   //Help button rect
   rectMode(CORNER);
   noStroke();
@@ -57,26 +64,33 @@ void loginScene() {
   fill(255);
   rect(width/2.25, height*0.72, baseW/6, baseH/10, 100);
 
+  //help button hover
+  buttonHover(width/2.25, height*0.72, baseW/6, baseH/10, #C9C3B7, 100);  //funciton in graphicFunctions (changes the button colour and makes hover = true when hovered)
+  if (hover == true) {
+    //if hover is true, show the insturctions with login info
+    fill(200, 200, 200, 248);
+    rectMode(CENTER);
+    float helpX = width/2;
+    float helpY = height/2.3;
+    float helpW = width/1.8;
+    float helpH = height/2.4;
 
-  //help button hover & click feature
-  buttonHover(width/2.25, height*0.72, baseW/6, baseH/10, #C9C3B7, 100);
-  if (hover == true && mousePressed == true) {
-    fill(200);
-    rect(50, 50, 50, 50);
+    rect(helpX, helpY, helpW, helpH, 30);
+    font(OratorR, helpH/6);
+    textAlign(CENTER, CENTER);
+    fill(0);
+    text("login info", helpX, helpY-helpH/3);
+    font(SDLight, helpH/15);
+    textLeading(helpW/20);  // Set leading to 40 (when screen is 1200 by 800)
+    text("if you are a patient please use:\nID: patient    password: alz\n\n"
+      +"if you are a doctor please use:\nID: doctor    password: alz0523", helpX, helpY + helpH/20);
   }
-  
-  
+
   //Help button text
   textAlign(CENTER, CENTER);
   fill(0);
-  textSize(height/26);
+  font(AvenirUL, height/26);
   text("HELP", baseX, baseY + baseH/2.6);
-
-  //draws the text boxes
-  for (TEXTBOX t : textboxes) {  //enhanced for loop for arrays
-    textFont(AvenirI);
-    t.DRAW();
-  }
 
   //if password and id is correct, patient scene
   if (logged == "patientSuccess") {

@@ -1,6 +1,6 @@
 
-//header state (home, assesment, game, contact, help)
-String headerState = "resources";
+//header state (init, home, assesment, game, resources, help)
+String headerState = "init";
 
 //logged in as patient
 void patientScene() {
