@@ -1,6 +1,6 @@
 
 //header state (home, assesment, game, contact, help)
-String headerState = "init";
+String headerState = "resources";
 
 //logged in as patient
 void patientScene() {
@@ -231,6 +231,21 @@ void clickResources() {
   String puzzleLink = "https://www.digipuzzle.net/main/kids/";  //link to the puzzle website
   resourceButton(img3X, puzzleLink);
   image(Puzzle, img3X, baseImgY);  //puzzle image
+
+  font(SDLight, height/30);
+  //titles
+  String s1 = "colouring page";
+  String s2 = "card game/sudoku";
+  String s3 = "jigsaw  puzzle";
+  //title array
+  String[] title = {s1, s2, s3};
+  //changing x value of the text
+  float Width = width/4.5;
+  //for loop that draws the 3 strings
+  for (int i = 0; i < 3; i++) {
+    text(title[i], Width, height*0.8);
+    Width += width/3.6;
+  }
 }
 
 //hover detecting funciton only for the resource button (because it uses the tint API and darkens the image it self + leads to a website
