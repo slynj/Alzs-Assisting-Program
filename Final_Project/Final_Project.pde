@@ -37,6 +37,7 @@ PImage Welcome;
 PImage Colouring;
 PImage Card;
 PImage Puzzle;
+PImage QuizR;
 
 
 //determind if user clicked or not
@@ -64,6 +65,7 @@ void setup() {
   Colouring = loadImage("colouring.png");
   Card = loadImage("card.png");
   Puzzle = loadImage("puzzle.png");
+  QuizR = loadImage("result.png");
 
   //for high quality text 
   pixelDensity(displayDensity());

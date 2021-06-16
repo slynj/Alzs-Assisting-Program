@@ -1,6 +1,6 @@
 
 //header state (init, home, assesment, game, resources, help, quiz, quiz result, game1, game2)
-String headerState = "quizResult";
+String headerState = "assessment";
 
 //logged in as patient
 void patientScene() {
@@ -328,33 +328,73 @@ void quiz() {
   }
 }
 
+//draws the title text
 void quizResult() {
+  
+  //title text
   font(ChapR, height/15, 0);
   textAlign(CENTER);
   text("Results", width/2, height/3.5);
 
+  //image in the middle
+  imageMode(CENTER);
+  image(QuizR, width/2, height/1.7);  //colouring image
+  resultText();  //draws the text result
+  
+}
+
+
+//draws texts for the result
+void resultText() {
+
   //results
   String results[] = {
     "Your brain is okay. Continue with the brain exercises and have healthy diet to maintain it.", 
-    "Your brain is functioning okay. By learning to relax and maintain a healthy diet, your brain can function at even higher levels.", 
-    "Your brain is in danger. Check your diet today. You can reduce brain drain and memory loss with vitamins, brain foods, herbs, yoga and meditation techniques, and appropriate medications.", 
-    "Your brain is running on empty. You should see your doctor. You can refuel your brain and prevent further memory loss with food, vitamins, herbs, exercises, and medications."
+    "Your brain is functioning okay. By learning to relax and maintain a healthy diet, your brain \n can function at even higher levels.", 
+    "Your brain is in danger. Check your diet today. You can reduce brain drain and memory loss \n with vitamins, brain foods, herbs, yoga and meditation techniques, and appropriate medications.", 
+    "Your brain is running on empty. You should see your doctor. You can refuel your brain and \n prevent further memory loss with food, vitamins, herbs, exercises, and medications.", 
+    "EXCELLENT", 
+    "GOOD", 
+    "DANGER", 
+    "EXTREME\nDANGER"
   };
 
-  font(SDLight, height/30, 0);
-  if (score > 0) {
-    text (results[0]);
-    if (score > 4) {
-      text (results[1]);
-      if (score > 8) {
-        text (results[2]);
-        if (score > 12) {
-          text (results[3]);
-        }
-      }
-    }
+  //text x, y
+  float text1X = width/2;
+  float text1Y = height*0.9;
+  float text2X = width/1.98;
+  float text2Y = height*0.74;
+  
+  //text setting
+  textAlign(CENTER);
+  font(SDLight, height/30, 0);  //font, size, colour
+  textLeading(width/30);  // Set leading to 40 (when screen is 1200 by 800)
+  
+  //if the level is excellent (determined in the quizResult()
+  if (score >= 0 && score < 5) {
+    text (results[0], text1X, text1Y);    //description text
+    font(AvenirUL, height/20, 0);      //change font
+    text(results[4], text2X, text2Y);  //levle
+    
+  } else if (score >= 5 && score < 9) {    //if good
+    text (results[1], text1X, text1Y);
+    font(AvenirUL, height/20, 0);
+    text(results[5], text2X, text2Y);
+    
+  } else if (score >= 9 && score < 12) {    //if dnager
+    text (results[2], text1X, text1Y);
+    font(AvenirUL, height/20, 0);
+    text(results[6], text2X, text2Y);
+    
+  } else if (score >= 12 && score <= 15) {  //if extreme danger
+    text (results[3], text1X, text1Y);
+    font(AvenirUL, height/20, 0);
+    text(results[7], text2X, height*0.71);
   }
 }
+
+
+
 
 //when game is clicked
 void clickGame() {
