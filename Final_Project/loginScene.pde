@@ -95,7 +95,7 @@ void loginScene() {
   } else if (logged == "doctorSuccess") {
     program = "doctor";
   } else if (logged == "fail") {
-    textAlign(CORNER);
+    textAlign(CORNERS);
     font(AvenirI, height/35, #BF5443);
     text("wrong ID or PASSWORD, please try again", (width - textWidth("wrong ID or PASSWORD, please try again")) / 2, baseY + baseW/6);
   }
