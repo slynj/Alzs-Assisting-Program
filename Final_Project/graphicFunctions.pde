@@ -25,3 +25,10 @@ void buttonHover(float x, float y, float w, float h, int colour, int r) {
     hover = true;
   } else {hover = false;}
 }
+
+//title font function (preset)
+void title(String str) {
+  textAlign(CENTER);
+  font(ChapR, height/15, 0);
+  text(str, width/2, height/3.5);
+}

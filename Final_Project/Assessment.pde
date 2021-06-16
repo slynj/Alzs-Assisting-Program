@@ -10,13 +10,14 @@ void clickAssessment() {
     + "- Problems coping with new situations."};
 
   //text 
-  textAlign(CENTER);
-  font(ChapR, height/15, 0);
-  text("Alzheimer's Assesment Quiz", width/2, height/3.5);
+  title("Alzheimer's Assesment Quiz");  //title text
+  
   font(AvenirI, height/25, #f9ad29);
-  text("BEFORE YOU START:", width/2, height/2.3);
+  text("BEFORE YOU START:", width/2, height/2.3);  //warning text 1
+  
   font(SDLight, height/30, 0);
-  text("This quiz is not 100% accurate. Please go visit the doctor if you have significant symtoms of Alzheimer's.", width/2, height/2);
+  text("This quiz is not 100% accurate. Please go visit the doctor if you have significant symtoms of Alzheimer's.", width/2, height/2);  //warning text 2
+  
   textSize(height/40);
   textAlign(LEFT);
   fill(#50483C);
@@ -33,7 +34,7 @@ void clickAssessment() {
   //rect(width/3, height*0.914, textWidth(url), height/30);
   if (mouseY > height*0.914 && mouseY < height*0.914 + height/30 && mouseX > width/3 && mouseX < width/3 + textWidth(url)) {  //collision detection
     fill(#3D5486);    //dark blue
-    if (mousePressed == true) {
+    if (mousePressed == true) {  //if clicked, go to the url
       link(url);
     }
   }
@@ -145,9 +146,7 @@ void quiz() {
 void quizResult() {
   
   //title text
-  font(ChapR, height/15, 0);
-  textAlign(CENTER);
-  text("Results", width/2, height/3.5);
+  title("Results");
 
   //image in the middle
   imageMode(CENTER);

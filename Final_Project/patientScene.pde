@@ -167,9 +167,7 @@ void startPage() {
 //when help is clicked
 void clickHelp() {
   //title text
-  font(ChapR, height/15, 0);
-  textAlign(CENTER);
-  text("Labels", width/2, height/3.5);
+  title("Labels");
   
   imageMode(CENTER);
   Help.resize(int(width*0.6), 0);

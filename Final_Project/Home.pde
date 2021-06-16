@@ -1,9 +1,8 @@
 //when home is clicked
 void clickHome() {
   //CONTENT
-  font(ChapR, height/15, 0);  //font & text size & colour for title
-  textAlign(CENTER);
-  text("What is Alzheimer's Disease?", width/2, height/3.5); //title
+  title("What is Alzheimer's Disease?");
+  
   font(SDLight, height/30, 0);  //font & text size for content
   textAlign(LEFT, CORNER);
   textLeading(width/20);  // Set leading to 40 (when screen is 1200 by 800)

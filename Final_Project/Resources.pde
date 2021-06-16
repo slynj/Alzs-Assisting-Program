@@ -6,10 +6,8 @@ void clickResources() {
   float img3X = img2X + Colouring.width + width/20;
   float baseImgY = height/2.5;
 
-  //text
-  font(ChapR, height/15, 0);
-  textAlign(CENTER);
-  text("Board? Try These Out!", width/2, height/3.5);
+  //title text
+  title("Board? Try These Out!");
 
   //image settings
   imageMode(CORNER);  //coordinates from the image centre
