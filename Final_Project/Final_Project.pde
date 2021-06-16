@@ -38,6 +38,7 @@ PImage Colouring;
 PImage Card;
 PImage Puzzle;
 PImage QuizR;
+PImage Help;
 
 
 //determind if user clicked or not
@@ -66,6 +67,7 @@ void setup() {
   Card = loadImage("card.png");
   Puzzle = loadImage("puzzle.png");
   QuizR = loadImage("result.png");
+  Help = loadImage ("help.png");
 
   //for high quality text 
   pixelDensity(displayDensity());
@@ -74,7 +76,7 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "login";  //program state is login
+  program = "patient";  //program state is login
 }
 
 void draw() {    
