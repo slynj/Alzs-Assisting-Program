@@ -11,6 +11,7 @@ void font(PFont s, float f, int colour) {
 
 //hover function
 void buttonHover(float x, float y, float w, float h, int colour, int r) {
+  hover = false;
   //draw rect
   rect(x, y, w, h, r);
   //collision detection

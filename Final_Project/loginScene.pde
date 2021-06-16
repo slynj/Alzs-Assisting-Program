@@ -85,6 +85,7 @@ void loginScene() {
 
   //Help button text
   textAlign(CENTER, CENTER);
+  fill(0);
   font(AvenirUL, height/26, 0);
   text("HELP", baseX, baseY + baseH/2.6);
 

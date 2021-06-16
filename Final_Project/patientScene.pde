@@ -1,5 +1,5 @@
 
-//header state (init, home, assesment, game, resources, help, quiz, game1, game2)
+//header state (init, home, assesment, game, resources, help, quiz, quiz result, game1, game2)
 String headerState = "assessment";
 
 //logged in as patient
@@ -23,6 +23,8 @@ void patientScene() {
     clickHelp();
   } else if (headerState == "quiz") {                    //start self assess quiz logged in
     quiz();
+  } else if (headerState == "quizResult") {                    //result page of the quiz
+    quizResult();
   } else if (headerState == "init") {                    //first logged in
     startPage();
   }
@@ -233,12 +235,16 @@ void clickAssessment() {
   rectMode(CORNER);
   noStroke();
   fill(255);
-  rect(startX, startY, startW/6, startH/10, 100);
+  //rect(startX, startY, startW/6, startH/10, 100);
 
   //start button hover
   buttonHover(startX, startY, startW/6, startH/10, #C9C3B7, 100);  //funciton in graphicFunctions (changes the button colour and makes hover = true when hovered)
-  if (hover == true && mousePressed == true) {
+  if (hover == true && mousePressed == true) {  
+    next = false;
+    quizIndex = 0;
+    score = 0;
     headerState = "quiz";
+    mousePressed = false;
   }
 
   //start button text
@@ -247,10 +253,85 @@ void clickAssessment() {
   text("START", startX*1.12, startY + startH/20);
 }
 
+int quizIndex = 0;
+int score = 0;
+boolean next = false;
+
 void quiz() {
+  //next (true when user submits the answer to go to the next question)
+
+  //the questions
+  String questions[] = {"1. From time to time, I forget what day of the week it is.", 
+    "2. Sometimes when I’m looking for something, I forget what it is that I’m looking for.", 
+    "3. My friends and family seem to think I’m more forgetful now than I used to be.", 
+    "4. Sometimes I forget the names of my friends.", 
+    "5. It’s hard for me to add two-digit numbers without writing them down.", 
+    "6. I frequently miss appointments because I forget them.", 
+    "7. I rarely feel energetic.", 
+    "8. Small problems upset me more than they once did.", 
+    "9. It’s hard for me to concentrate for even an hour.", 
+    "10. I often misplace my keys, and when I find them, I often can’t remember putting them there.", 
+    "11. I frequently repeat myself.", 
+    "12. Sometime I get lost, even when I’m driving somewhere I’ve been before.", 
+    "13. Sometimes I forget the point I’m trying to make.", 
+    "14. To feel mentally sharp, I depend upon caffeine.", 
+    "15. It takes longer for me to learn things than it used to."};
+
+  //buttons x, y, and side
+  float trueX = width/7;  //true bttn x
+  float falseX = width/2 + width/100;  //false bttn x
+  float tfY = height/2.5;  //both bttns y
+  float tfS = height/2;  //both bttns side
+
+  //buttons setting
+  rectMode(CORNER);
+  noStroke();
+
+  //true and false button hover
+  //funciton in graphicFunctions (changes the button colour and makes hover = true when hovered)
+  fill(255);  //white before hover
+  buttonHover(trueX, tfY, tfS, tfS, #C9C3B7, 100);  //true bttn
+  //if button clicked, 
+  if (hover == true && mousePressed == true) {
+    next = true;
+    mousePressed = false;
+    score ++;
+  }
+
+  fill(255);  //white before hover
+  buttonHover(falseX, tfY, tfS, tfS, #C9C3B7, 100);  //false bttn
+  //if button clicked, 
+  if (hover == true && mousePressed == true) {
+    next = true;
+    mousePressed = false;
+  }
+
+  //true button text
+  textAlign(CENTER, CENTER);
+  font(AvenirUL, height/10, 0);
+  text("TRUE", trueX*2.15, tfY + tfS/2);
+  text("FALSE", falseX*1.33, tfY + tfS/2);
+  
+
+  if (next == true) {  //if the user sumbmitted the answer for the question
+    font(AvenirR, height/30, 0);
+    text(questions[quizIndex++], width/2, height/3.5);  //draw the question
+    next = false;
+    if (quizIndex > 14) {
+      next = false;
+      headerState = "quizResult";
+      quizIndex = 0;
+    }
+  } else {
+    font(AvenirR, height/30, 0);
+    text(questions[quizIndex], width/2, height/3.5);  //draw the question
+  }
+}
+
+void quizResult() {
   textAlign(CENTER);
   fill(0);
-  text("game", width/2, height/2);
+  text(score, width/2, height/2);
 }
 
 //when game is clicked
