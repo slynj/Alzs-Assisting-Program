@@ -1,6 +1,6 @@
 
 //header state (init, home, assesment, game, resources, help, quiz, quiz result, game1, game2)
-String headerState = "assessment";
+String headerState = "quizResult";
 
 //logged in as patient
 void patientScene() {
@@ -226,6 +226,7 @@ void clickAssessment() {
   }
   text(url, width/2, height*0.93);  //draw the text
 
+  //start button  x, y, w, h
   float startX = width/2.25;
   float startY = height*0.78;
   float startW = width*0.66;
@@ -235,16 +236,16 @@ void clickAssessment() {
   rectMode(CORNER);
   noStroke();
   fill(255);
-  //rect(startX, startY, startW/6, startH/10, 100);
 
   //start button hover
   buttonHover(startX, startY, startW/6, startH/10, #C9C3B7, 100);  //funciton in graphicFunctions (changes the button colour and makes hover = true when hovered)
+  //if start button clicked
   if (hover == true && mousePressed == true) {  
-    next = false;
-    quizIndex = 0;
-    score = 0;
-    headerState = "quiz";
-    mousePressed = false;
+    next = false;    //next is false (prevents it from starting with #2)
+    quizIndex = 0;   //reset question number
+    score = 0;       //reset score
+    headerState = "quiz";  //go to quiz
+    mousePressed = false;  //unpress the mousepressed (prevent the situation where user click and hold)
   }
 
   //start button text
@@ -253,12 +254,12 @@ void clickAssessment() {
   text("START", startX*1.12, startY + startH/20);
 }
 
-int quizIndex = 0;
-int score = 0;
-boolean next = false;
+//variable declartioni (only used for quiz and quizResult Function)
+int quizIndex = 0;    //question# to start is 0
+int score = 0;    //score is also 0
+boolean next = false;  //next is false (next changes the question #)
 
 void quiz() {
-  //next (true when user submits the answer to go to the next question)
 
   //the questions
   String questions[] = {"1. From time to time, I forget what day of the week it is.", 
@@ -292,10 +293,10 @@ void quiz() {
   fill(255);  //white before hover
   buttonHover(trueX, tfY, tfS, tfS, #C9C3B7, 100);  //true bttn
   //if button clicked, 
-  if (hover == true && mousePressed == true) {
-    next = true;
-    mousePressed = false;
-    score ++;
+  if (hover == true && mousePressed == true) {  
+    next = true;  //change to next question
+    mousePressed = false;  //unpress the button (the user might hold on to the button and slide through the buttons)
+    score ++;  //add 1 to the score (because it's true)
   }
 
   fill(255);  //white before hover
@@ -306,32 +307,53 @@ void quiz() {
     mousePressed = false;
   }
 
-  //true button text
+  //button texts
   textAlign(CENTER, CENTER);
-  font(AvenirUL, height/10, 0);
+  font(AvenirUL, height/10, 0);    //font, size, colour (function in graphiFunctions)
   text("TRUE", trueX*2.15, tfY + tfS/2);
   text("FALSE", falseX*1.33, tfY + tfS/2);
-  
+
 
   if (next == true) {  //if the user sumbmitted the answer for the question
     font(AvenirR, height/30, 0);
-    text(questions[quizIndex++], width/2, height/3.5);  //draw the question
-    next = false;
-    if (quizIndex > 14) {
-      next = false;
-      headerState = "quizResult";
-      quizIndex = 0;
+    text(questions[quizIndex++], width/2, height/3.5);  //draw the question adding 1 to the quizIndex
+    next = false;  //change next to false
+    if (quizIndex > 14) {    //if user clicked the button, and the index is greater than 14, there are no more quesitons
+      next = false;  //next is false
+      headerState = "quizResult";  //go to showing result
     }
   } else {
-    font(AvenirR, height/30, 0);
-    text(questions[quizIndex], width/2, height/3.5);  //draw the question
+    font(AvenirR, height/30, 0);    //when not clicked
+    text(questions[quizIndex], width/2, height/3.5);  //draw the question that is not +1
   }
 }
 
 void quizResult() {
+  font(ChapR, height/15, 0);
   textAlign(CENTER);
-  fill(0);
-  text(score, width/2, height/2);
+  text("Results", width/2, height/3.5);
+
+  //results
+  String results[] = {
+    "Your brain is okay. Continue with the brain exercises and have healthy diet to maintain it.", 
+    "Your brain is functioning okay. By learning to relax and maintain a healthy diet, your brain can function at even higher levels.", 
+    "Your brain is in danger. Check your diet today. You can reduce brain drain and memory loss with vitamins, brain foods, herbs, yoga and meditation techniques, and appropriate medications.", 
+    "Your brain is running on empty. You should see your doctor. You can refuel your brain and prevent further memory loss with food, vitamins, herbs, exercises, and medications."
+  };
+
+  font(SDLight, height/30, 0);
+  if (score > 0) {
+    text (results[0]);
+    if (score > 4) {
+      text (results[1]);
+      if (score > 8) {
+        text (results[2]);
+        if (score > 12) {
+          text (results[3]);
+        }
+      }
+    }
+  }
 }
 
 //when game is clicked
