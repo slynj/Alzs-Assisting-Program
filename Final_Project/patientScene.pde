@@ -1,6 +1,6 @@
 
 //header state (init, home, assesment, game, resources, help, quiz, quiz result, game1, game2)
-String headerState = "init";
+String headerState = "game";
 
 //logged in as patient
 void patientScene() {
@@ -25,6 +25,10 @@ void patientScene() {
     quiz();
   } else if (headerState == "quizResult") {                    //result page of the quiz
     quizResult();
+  } else if (headerState == "game1") {                    //1st game
+    game1();
+  } else if (headerState == "game2") {                    //2nd game
+    game2();
   } else if (headerState == "init") {                    //first logged in
     startPage();
   }
@@ -168,7 +172,7 @@ void startPage() {
 void clickHelp() {
   //title text
   title("Labels");
-  
+
   imageMode(CENTER);
   Help.resize(int(width*0.6), 0);
   image(Help, width/2, height/1.6);
