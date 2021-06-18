@@ -6,9 +6,9 @@ String headerState = "init";
 void patientScene() {
 
   patientInit();      //graphic set up for patient scene
-  signoutButton();    //button for signout (goes back to login scene)
+  signoutButton();    //button for signout (=goes back to login scene) (written in the doctorScene tab)
   headerButton();     //header buttons (home, assesment, game, contact, help) hover feature + changes header state
-  backgroundC();       //bakcground (ivory rect)
+  backgroundC();       //bakcground (ivory rect) (written in the doctorScene tab)
 
   //header state check (changes the page)
   if (headerState == "home") {                    //clicked home
@@ -36,7 +36,7 @@ void patientScene() {
 void patientInit() {
   background(255);
 
-  logo();  //draws the logo (function written in doctorScene)
+  logo();  //draws the logo + collision detection and click feature(function written in doctorScene)
 
   //logo button feature
   if (mouseY > width/100 && mouseY < width/100 + height/25 && mouseX > width/100 && mouseX < width/100 + textWidth("Alz's")) {
@@ -50,26 +50,7 @@ void patientInit() {
   basicGraphic(); //draws the header rect (besides the logo) and the menu rect (the yellow bar)
 }
 
-//button for signout (goes back to login scene)
-void signoutButton() {
-  //sign out rect setup
-  rectMode(CORNER);
-  fill(#CBC5BD);
 
-  //hover function draws the button changes the colour when hovered
-  buttonHover(width*0.87, height/43, width/10, height/40, #B7ADA1, 10);
-  //if mouse hovered and mouse is pressed, button is clicked
-  if (hover == true && mousePressed == true) {
-    logged = "init";          //reset the logged variable to init(it was previously success)
-    program = "login";        //change the program state to login
-    headerState = "init";     //reset to the welcome page after logged back in
-  }
-
-  //sign out text
-  font(AvenirI, height/50, 255);
-  textAlign(CENTER, TOP);
-  text("sign out", width*0.87 + width/20, height/40);
-}
 
 //header buttons (home, assesment, game, contact, help)
 void headerButton() {
@@ -134,12 +115,6 @@ void headerButton() {
   }
 }
 
-
-void backgroundC() {
-  //background rect
-  fill(#efece5);
-  rect(width/100, height/6.7 + width/100, width - width/50, height-height/6.7 - width/50, 5);
-}
 
 //when user first logs in
 void startPage() {
