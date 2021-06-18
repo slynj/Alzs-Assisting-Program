@@ -25,10 +25,8 @@ void patientScene() {
     quiz();
   } else if (headerState == "quizResult") {                    //result page of the quiz
     quizResult();
-  } else if (headerState == "game1") {                    //1st game
-    game1();
   } else if (headerState == "pickGame") {                    //pick and click game
-    pickingGame();
+    game();
   } else if (headerState == "init") {                    //first logged in
     startPage();
   }

@@ -40,31 +40,6 @@ void clickGame() {
   text("pick & click! game", falseX*1.33, tfY + tfS/2);
 }
 
-String box[] = {null, null, null, null, null, null, null, null, null, null, null, null};
-
-void game1() {
-  title("game1");  //title
-
-  rectMode(CORNER);
-  fill(#CBC5BD);    //hover #B7ADA1
-  rect(width*0.13, height*0.3, height/5, height/5, height/30);
-  rect(width*0.33, height*0.3, height/5, height/5, height/30);
-  rect(width*0.53, height*0.3, height/5, height/5, height/30);
-  rect(width*0.73, height*0.3, height/5, height/5, height/30);
-  rect(width*0.13, height*0.53, height/5, height/5, height/30);
-  rect(width*0.33, height*0.53, height/5, height/5, height/30);
-  rect(width*0.53, height*0.53, height/5, height/5, height/30);
-  rect(width*0.73, height*0.53, height/5, height/5, height/30);
-  rect(width*0.13, height*0.76, height/5, height/5, height/30);
-  rect(width*0.33, height*0.76, height/5, height/5, height/30);
-  rect(width*0.53, height*0.76, height/5, height/5, height/30);
-  rect(width*0.73, height*0.76, height/5, height/5, height/30);
-
-  String fruits[] = {"apple", "grape", "pear", "pineapple", "strawberry", "watermelon"};
-}
-
-
-
 
 //variable declaration (used for picking game only)
 int count = 0;    //the question # (starting from 0) used to change the string in the gameState 
@@ -75,9 +50,13 @@ float buttonY; //button Y coordinate
 float buttonS;  //button Side
 int buttonC;  //button Corner
 int answer;  //answer index of the question (in the array)
+float start = 0;  //time it took to start the game
+float end = 0;  //time it took to finish the game
+boolean gameOn = true;  //if the game ended or not (true: not ended, false: ended)
+
 
 //the pickingGame function decides what to draw on the screen (what texts, the answer, chocies etc.) and changes the questions when the gameState is changed. 
-void pickingGame() {
+void game() {
   //the question choices (multiple choice) each array is 1 question and the strings are the choices(buttons)
   String[] apple = {"red", "apple", "round", "banana"};
   String[] grape = {"grape", "purple", "rectangle", "round"};
@@ -87,25 +66,28 @@ void pickingGame() {
   String[] watermelon = {"red", "square", "seed", "green"};
 
   //the questions that changes when the gameState changes
-  if (gameState == "pickGame0") {
-    pickGame(Apple, "unrelated", apple, 3);
+  if (gameState == "pickGame0") {    //question #1
+    start = millis();    //get the time started (to calculated the time it took later)
+    pickGame(Apple, "unrelated", apple, 3);  //draw the buttons, image, check the answer
     
-  } else if (gameState.equals ("pickGame1")) {
-    pickGame(Grape, "unrelated", grape, 2);
+  } else if (gameState.equals ("pickGame1")) {    //question #2
+    pickGame(Grape, "unrelated", grape, 2);  //draw the buttons, image, check the answer
     
-  } else if (gameState.equals ("pickGame2")) {
-    pickGame(Pear, "unrelated", pear, 0);
+  } else if (gameState.equals ("pickGame2")) {    //question #3
+    pickGame(Pear, "unrelated", pear, 0);  //draw the buttons, image, check the answer
     
-  } else if (gameState.equals ("pickGame3")) {
-    pickGame(Pineapple, "unrelated", pineapple, 1);
+  } else if (gameState.equals ("pickGame3")) {    //question #4
+    pickGame(Pineapple, "unrelated", pineapple, 1);  //draw the buttons, image, check the answer
     
-  } else if (gameState.equals ("pickGame4")) {
-    pickGame(Strawberry, "unrelated", strawberry, 3);
+  } else if (gameState.equals ("pickGame4")) {    //question #5
+    pickGame(Strawberry, "unrelated", strawberry, 3);  //draw the buttons, image, check the answer
     
-  } else if (gameState.equals ("pickGame5")) {
-    pickGame(Watermelon, "unrelated", watermelon, 1);
+  } else if (gameState.equals ("pickGame5")) {    //question #6
+    pickGame(Watermelon, "unrelated", watermelon, 1);  //draw the buttons, image, check the answer
+    end = millis();     //get the time ended(to calculated the time it took later)
+    gameOn = false;    //last question, so it changes to game on to false, getting all the data and putting it in to the file
     
-  } else if (gameState.equals ("pickGame6")) {
+  } else if (gameState.equals ("pickGame6")) {    //question #7
     gameEnd();
   }
 }
@@ -166,6 +148,14 @@ void pickGame(PImage image, String instruction, String[] choice, int ans) {    /
 
 }
 
+//resets the value of the variables when started over
+void pickGameInit() {
+  count = 0;    //the question # (starting from 0) used to change the string in the gameState 
+  gameState = "pickGame0";    //gameState that changes the questions (the int of the pickGame is determined by count)
+  score = 0;  //score of the player
+  gameOn = true;
+} 
+
 
 //button text only for the picking game (preset)
 void pickGameButton(float X) { //X coordinate of the button
@@ -191,20 +181,24 @@ void pickGameAns() {
   }
 }
 
-//resets the value of the variables when started over
-void pickGameInit() {
-  count = 0;    //the question # (starting from 0) used to change the string in the gameState 
-  gameState = "pickGame0";    //gameState that changes the questions (the int of the pickGame is determined by count)
-  score = 0;  //score of the player
-}  
-
-
+//graphics and buttons to show when the game is ended (+ add data to the file)
 void gameEnd() {
-  title("Score");
+  //variable declaration
+  float scorePer = (score/6.)*100;  //score in percentage
+  float time = (end - start)/1000;  //time it took to finish the game in seconds
+  
+  //if game is ended (on the last question)
+  if (gameOn == false) {
+    appendText(filename, scorePer, time);    //append to the text file (add score percentage and time)
+    gameOn = true;  //change the state back to true (so it doest write over and over)
+  }
+  
+  //end screen text
+  title("Score");  //presetted title font, size, position
   textAlign(CENTER, CENTER);
-  font(SDLight, height/30, #22A7A4);
+  font(SDLight, height/30, #22A7A4);  //font, size, colour for the text
   text("your score is:", width/2, height/2.2);
-  font(AvenirUL, height/5, #f9ad29);
+  font(AvenirUL, height/5, #f9ad29);  //font, size, colour for the text
   text(score, width/2, height/1.7);
   
   //go home button  x, y, w, h

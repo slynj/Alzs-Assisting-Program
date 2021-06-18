@@ -80,7 +80,8 @@ void setup() {
   Pineapple = loadImage("pineapple.png");
   Strawberry = loadImage("strawberry.png");
   Watermelon = loadImage("watermelon.png");
-
+  
+  
 
   //for high quality text 
   pixelDensity(displayDensity());
