@@ -27,8 +27,8 @@ void patientScene() {
     quizResult();
   } else if (headerState == "game1") {                    //1st game
     game1();
-  } else if (headerState == "game2") {                    //2nd game
-    game2();
+  } else if (headerState == "pickGame") {                    //pick and click game
+    pickingGame();
   } else if (headerState == "init") {                    //first logged in
     startPage();
   }
@@ -45,22 +45,22 @@ void patientInit() {
 
   //logo button feature
   if (mouseY > width/100 && mouseY < width/100 + height/25 && mouseX > width/100 && mouseX < width/100 + textWidth("Alz's")) {
-    fill(#22A7A4);
+    fill(#22A7A4);  //green
     text("Alz's", width/100, width/100);
-    if (mousePressed == true) {
-      headerState = "init";
+    if (mousePressed == true) {  //if clicked
+      headerState = "init";  //the welcome page
     }
   }
 
   //header rect (besides the logo)
   rectMode(RIGHT);
-  fill(#efece5);
+  fill(#efece5);  //dark beige
   noStroke();
   rect(width - width/100, width/100, width/10, height/18, 5);
 
   //menu — base rect (header rectangle)
   rectMode(CENTER);
-  fill(#f9ad29);
+  fill(#f9ad29);  //yellow
   noStroke();
   rect(width/2, height/9, width, height/13);
 }

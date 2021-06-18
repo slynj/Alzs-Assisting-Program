@@ -4,9 +4,9 @@ boolean hover;
 //font function
 void font(PFont s, float f, int colour) {
   //font kind and text size
-  textFont(s);
-  textSize(f);
-  fill(colour);
+  textFont(s);  //font kind
+  textSize(f);  //size
+  fill(colour);  //colour
 }
 
 //hover function (takes x, y, w, h, colour when hovered, and corner radius)
