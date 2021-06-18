@@ -45,6 +45,7 @@ PImage Pear;
 PImage Pineapple;
 PImage Strawberry;
 PImage Watermelon;
+PImage Doctor;
 
 
 //determind if user clicked or not
@@ -80,6 +81,7 @@ void setup() {
   Pineapple = loadImage("pineapple.png");
   Strawberry = loadImage("strawberry.png");
   Watermelon = loadImage("watermelon.png");
+  Doctor = loadImage("doctor.png");
 
   //for high quality text 
   pixelDensity(displayDensity());

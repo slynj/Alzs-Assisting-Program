@@ -1,4 +1,4 @@
-String menuState = "init";
+String menuState = "score";
 
 
 void doctorScene() {
@@ -8,20 +8,15 @@ void doctorScene() {
   backgroundC();       //bakcground (ivory rect)
 
   if (menuState == "init") {
-    welcomePage();
-    
+    startPage(Doctor);
   } else if (menuState == "score") {
     scorePage();
-    
   } else if (menuState == "time") {
     timePage();
-    
   } else if (menuState == "average") {
     averagePage();
-    
   } else if (menuState == "table") {
     tablePage();
-    
   } else if (menuState == "help") {
     helpPage();
   }
@@ -160,14 +155,41 @@ void backgroundC() {
   rect(width/100, height/6.7 + width/100, width - width/50, height-height/6.7 - width/50, 5);
 }
 
+//when user first logs in + when logo is clicked, the welcome image + 1 image(chosen through the parmeter) is shown
+void startPage(PImage image) {
+  //draw image 
+  image.resize(width - width/50, 0);  //resize image
+  image(image, width/2, height/6.7 + width/100 + height-height/6.7 - width/50 - image.height/2);  //draw image
 
-void welcomePage() {
-  title("welcome");
+  //dramw welcome image
+  imageMode(CENTER);  //coordinates from the image centre
+  Welcome.resize(0, height/6);  //resize image
+  image(Welcome, width/2, height/3.5);  //draw image
 }
 
 
+ArrayList<Float> scoreData = new ArrayList<Float>();
+ArrayList<Float> timeData = new ArrayList<Float>();
+float[] data;
+
+float graphRectX;
+float graphRectY;
+float graphRectW;
+float graphRectH;
+
 void scorePage() {
+  graphRectX = width/20;
+  graphRectY = height/6.7 + width/7;
+  graphRectW = width - width/10;
+  graphRectH = height-height/6.7 - width/5;
+
   title("score");
+  
+  fill(#B7ADA1);
+  rect(graphRectX, graphRectY, graphRectW, graphRectH, 10);
+
+  importFile();
+
 }
 
 
@@ -193,3 +215,43 @@ void tablePage() {
 void helpPage() {
   title("help");
 }
+
+
+void importFile() {
+  BufferedReader reader = createReader("score.txt");
+  String line = null;
+  float graphRectBY = graphRectY + graphRectH;
+
+  try {
+    while ((line = reader.readLine()) != null) {
+      String[] data = split(line, ",");
+      scoreData.add(float(data[0]));
+      timeData.add(float(data[1]));
+    }
+    reader.close();
+  } 
+  catch (IOException e) {
+    e.printStackTrace();
+  }
+  
+  //stroke setup
+  strokeWeight(3);
+  stroke(0);
+
+  float lineWidth = graphRectW/(scoreData.size()-1);
+  float lineHeight = graphRectH/100;
+
+
+  //for (int i = 0; i < scoreData.size()-1; i++) {
+  //  line(i*lineWidth, scoreData.get(i), (i+1)*lineWidth, scoreData.get(i+1));
+    
+  //}
+  
+  for (int i = 0; i < scoreData.size()-1; i++) {
+    line(i*lineWidth+graphRectX, graphRectBY - (scoreData.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (scoreData.get(i+1)*lineHeight));
+    
+  }
+
+  scoreData.clear();
+  timeData.clear();
+} 

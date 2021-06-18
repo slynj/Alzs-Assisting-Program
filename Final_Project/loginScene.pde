@@ -91,9 +91,11 @@ void loginScene() {
 
   //if password and id is correct, patient scene
   if (logged == "patientSuccess") {
-    program = "patient";
+    headerState = "init";  //set page to the welcome page of the patient program
+    program = "patient";  //change to patient program
   } else if (logged == "doctorSuccess") {
-    program = "doctor";
+    menuState = "init"; //set page to the welcome page of the doctor program
+    program = "doctor";  //change to doctor program
   } else if (logged == "fail") {
     textAlign(CORNERS);
     font(AvenirI, height/35, #BF5443);

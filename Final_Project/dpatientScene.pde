@@ -27,8 +27,8 @@ void patientScene() {
     quizResult();
   } else if (headerState == "pickGame") {                    //pick and click game
     game();
-  } else if (headerState == "init") {                    //first logged in
-    startPage();
+  } else if (headerState == "init") {                    //first logged in, show the welcome + hospital image (function is written in the doctorScene tab)
+    startPage(Hospital);
   }
 }
 
@@ -116,19 +116,7 @@ void headerButton() {
 }
 
 
-//when user first logs in
-void startPage() {
-  //welcome image
-  imageMode(CENTER);  //coordinates from the image centre
-  Welcome.resize(0, height/6);  //resize image
-  image(Welcome, width/2, height/3.5);  //draw image
-
-  //hospital image
-  Hospital.resize(width - width/50, 0);  //resize image
-  image(Hospital, width/2, height/6.7 + width/100 + height-height/6.7 - width/50 - Hospital.height/2);  //draw image
-}
-
-//when help is clicked
+//when help is clicked, show the text and the image
 void clickHelp() {
   //title text
   title("Labels");
