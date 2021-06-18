@@ -39,6 +39,12 @@ PImage Card;
 PImage Puzzle;
 PImage QuizR;
 PImage Help;
+PImage Apple;
+PImage Grape;
+PImage Pear;
+PImage Pineapple;
+PImage Strawberry;
+PImage Watermelon;
 
 
 //determind if user clicked or not
@@ -58,7 +64,7 @@ void setup() {
   AvenirR = loadFont("AvenirNext-Regular-48.vlw");
   OratorR = loadFont("OratorStd-48.vlw");
   ChapR = loadFont("ChaparralPro-Regular-48.vlw");
-  
+
   //image import
   Grandpa = loadImage("grandpa.png");
   Hospital = loadImage("hospital.png");
@@ -68,6 +74,13 @@ void setup() {
   Puzzle = loadImage("puzzle.png");
   QuizR = loadImage("result.png");
   Help = loadImage ("help.png");
+  Apple = loadImage("apple.png");
+  Grape = loadImage("grape.png");
+  Pear = loadImage("pear.png");
+  Pineapple = loadImage("pineapple.png");
+  Strawberry = loadImage("strawberry.png");
+  Watermelon = loadImage("watermelon.png");
+
 
   //for high quality text 
   pixelDensity(displayDensity());

@@ -9,7 +9,7 @@ void font(PFont s, float f, int colour) {
   fill(colour);
 }
 
-//hover function
+//hover function (takes x, y, w, h, colour when hovered, and corner radius)
 void buttonHover(float x, float y, float w, float h, int colour, int r) {
   hover = false;
   //draw rect
