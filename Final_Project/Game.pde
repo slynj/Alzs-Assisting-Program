@@ -3,27 +3,17 @@ void clickGame() {
   title("Excercise You Brain! Play Games");  //title
 
   //buttons x, y, and side
-  float trueX = width/7;  //true bttn x
-  float falseX = width/2 + width/100;  //false bttn x
-  float tfY = height/2.5;  //both bttns y
-  float tfS = height/2;  //both bttns side
+  float bttnS = height/4;  //bttn side length
+  float bttnX = width/2 - bttnS/2;  //bttn x
+  float bttnY = height/1.5;  //bttn y
 
   //buttons setting
   rectMode(CORNER);
   noStroke();
 
-  //true and false button hover
-  //funciton in graphicFunctions (changes the button colour and makes hover = true when hovered)
-  fill(255);  //white before hover
-  buttonHover(trueX, tfY, tfS, tfS, #C9C3B7, 100);  //true bttn
-  //if button clicked, 
-  if (hover == true && mousePressed == true) {  
-    headerState = "game1";
-    mousePressed = false;  //unpress the button (the user might hold on to the button and slide through the buttons)
-  }
 
   fill(255);  //white before hover
-  buttonHover(falseX, tfY, tfS, tfS, #C9C3B7, 100);  //false bttn
+  buttonHover(bttnX, bttnY, bttnS, bttnS, #C9C3B7, 50);  //false bttn
   //if button clicked, 
   if (hover == true && mousePressed == true) {
     pickGameInit();  //resets the game variables
@@ -31,13 +21,10 @@ void clickGame() {
     mousePressed = false;  //unpress the button (the user might hold on to the button and slide through the buttons)
   }
 
-  //button texts
+  //button text
   textAlign(CENTER, CENTER);
-  font(AvenirUL, height/10, 0);    //font, size, colour (function in graphiFunctions)
-  //game titles
-  text("game1", trueX*2.15, tfY + tfS/2);
-  font(AvenirUL, height/20, 0);    //font, size, colour (function in graphiFunctions)
-  text("pick & click! game", falseX*1.33, tfY + tfS/2);
+  font(AvenirUL, height/30, 0);    //font, size, colour (function in graphiFunctions)
+  text("pick & click!\ngame start", bttnX*1.2, bttnY + bttnS/2);
 }
 
 
@@ -69,24 +56,18 @@ void game() {
   if (gameState == "pickGame0") {    //question #1
     start = millis();    //get the time started (to calculated the time it took later)
     pickGame(Apple, "unrelated", apple, 3);  //draw the buttons, image, check the answer
-    
   } else if (gameState.equals ("pickGame1")) {    //question #2
     pickGame(Grape, "unrelated", grape, 2);  //draw the buttons, image, check the answer
-    
   } else if (gameState.equals ("pickGame2")) {    //question #3
     pickGame(Pear, "unrelated", pear, 0);  //draw the buttons, image, check the answer
-    
   } else if (gameState.equals ("pickGame3")) {    //question #4
     pickGame(Pineapple, "unrelated", pineapple, 1);  //draw the buttons, image, check the answer
-    
   } else if (gameState.equals ("pickGame4")) {    //question #5
     pickGame(Strawberry, "unrelated", strawberry, 3);  //draw the buttons, image, check the answer
-    
   } else if (gameState.equals ("pickGame5")) {    //question #6
     pickGame(Watermelon, "unrelated", watermelon, 1);  //draw the buttons, image, check the answer
     end = millis();     //get the time ended(to calculated the time it took later)
     gameOn = false;    //last question, so it changes to game on to false, getting all the data and putting it in to the file
-    
   } else if (gameState.equals ("pickGame6")) {    //question #7
     gameEnd();
   }
@@ -111,41 +92,40 @@ void pickGame(PImage image, String instruction, String[] choice, int ans) {    /
   } else if (instruction == "related") {
     instruction = "choose one related word";
   }
-  
+
   //draws the image
   imageMode(CENTER);  //image coordinate based on the center of the image
   image.resize(0, int(height/4));  //image resize
   image(image, width/2, height/3);  //draw image
-  
+
   //draws the instruction text
   font(SDLight, height/30, 0);  //font & text size for content
   textAlign(CENTER);
   text(instruction, width/2, height/1.9);  //text x y
-  
+
   //the first button (1st choice)
   i = 0;  //index 0 for the question array
   pickGameButton(width*0.13);  //function: button draw + text preset of the button (gets the X and draws the button)
   text(choice[i], width*0.13 + buttonS/2, buttonTY);  //draw the text
   pickGameAns();   //check if this button is clicked (if it is, go to next Q). also checks the answer and changes score variable
-  
+
   //the second button (2nd choice)
   i = 1;  //index 1 for the question array
   pickGameButton(width*0.33);  //function: button draw + text preset of the button (gets the X and draws the button)
   text(choice[i], width*0.33 + buttonS/2, buttonTY);  //draw the text
   pickGameAns();   //check if this button is clicked (if it is, go to next Q). also checks the answer and changes score variable
-  
+
   //the thrid button (3rd choice)
   i = 2;  //index 2 for the question array
   pickGameButton(width*0.53);  //function: button draw + text preset of the button (gets the X and draws the button)
   text(choice[i], width*0.53 + buttonS/2, buttonTY);  //draw the text
   pickGameAns();   //check if this button is clicked (if it is, go to next Q). also checks the answer and changes score variable
-  
+
   //the fourth button (4th choice)
   i = 3;  //index 3 for the question array
   pickGameButton(width*0.73);  //function: button draw + text preset of the button (gets the X and draws the button)
   text(choice[i], width*0.73 + buttonS/2, buttonTY);  //draw the text
   pickGameAns();   //check if this button is clicked (if it is, go to next Q). also checks the answer and changes score variable
-
 }
 
 //resets the value of the variables when started over
@@ -186,13 +166,13 @@ void gameEnd() {
   //variable declaration
   float scorePer = (score/6.)*100;  //score in percentage
   float time = (end - start)/1000;  //time it took to finish the game in seconds
-  
+
   //if game is ended (on the last question)
   if (gameOn == false) {
     appendText(filename, scorePer, time);    //append to the text file (add score percentage and time)
     gameOn = true;  //change the state back to true (so it doest write over and over)
   }
-  
+
   //end screen text
   title("Score");  //presetted title font, size, position
   textAlign(CENTER, CENTER);
@@ -200,7 +180,7 @@ void gameEnd() {
   text("your score is:", width/2, height/2.2);
   font(AvenirUL, height/5, #f9ad29);  //font, size, colour for the text
   text(score, width/2, height/1.7);
-  
+
   //go home button  x, y, w, h
   float goHomeX = width/2.25;
   float goHomeY = height*0.78;
@@ -224,5 +204,4 @@ void gameEnd() {
   textAlign(CENTER, CENTER);
   font(AvenirUL, height/26, 0);
   text("HOME", goHomeX*1.12, goHomeY + goHomeH/20);
-
 }

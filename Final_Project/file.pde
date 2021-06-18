@@ -14,7 +14,7 @@ void appendText (String filename, float scorePer, float time){
   try {  //run this, but if there is an error (continued in catch part)
     //open the writer file with called the filename(score.txt)
     PrintWriter Score = new PrintWriter(new BufferedWriter(new FileWriter(f, true)));
-    Score.printf("%5.2f, %5.2f\n", scorePer, time);  //add the data to the file with formating
+    Score.printf("%5.2f, %5.2f\n", scorePer, time);  //add the data to the file with formating (float has max of 2 digits)
     Score.close();  //close the file
   }catch (IOException e){  //during input or output,
       e.printStackTrace();  //show what happened

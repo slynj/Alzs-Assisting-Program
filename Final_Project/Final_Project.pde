@@ -80,8 +80,6 @@ void setup() {
   Pineapple = loadImage("pineapple.png");
   Strawberry = loadImage("strawberry.png");
   Watermelon = loadImage("watermelon.png");
-  
-  
 
   //for high quality text 
   pixelDensity(displayDensity());
@@ -90,7 +88,7 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "patient";  //program state is login
+  program = "doctor";  //program state is login
 }
 
 void draw() {    
@@ -100,7 +98,7 @@ void draw() {
   } else if ( program == "patient") {
     patientScene();
   } else if ( program == "doctor") {
-    text("doctor", 0, 0);
+    doctorScene();
   }
 }
 
