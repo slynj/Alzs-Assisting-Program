@@ -63,6 +63,7 @@ PImage Doctor;
 PImage Asc;
 PImage Adi;
 PImage As;
+PImage HelpDoctor;
 
 
 //determind if user clicked or not
@@ -112,6 +113,7 @@ void setup() {
   Asc = loadImage("asc.png");
   Adi = loadImage("adi.png");
   As = loadImage("as.png");
+  HelpDoctor = loadImage("helpDoctor.png");
 
   //for high quality text 
   pixelDensity(displayDensity());
@@ -120,7 +122,7 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "doctor";  //program state is login
+  program = "login";  //program state is login
 }
 
 void draw() {    

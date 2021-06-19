@@ -1,4 +1,4 @@
-String menuState = "contact";
+String menuState = "init";
 
 
 void doctorScene() {
@@ -208,7 +208,10 @@ void contactPage() {
 }
 
 
-
+//draws the help doctor image on the help page (labels)
 void helpPage() {
-  title("help");
+  titleHigher("labels");
+  imageMode(CENTER);
+  HelpDoctor.resize(int(width*0.6), 0);
+  image(HelpDoctor, width/2, height/1.6);
 }
