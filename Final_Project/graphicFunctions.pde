@@ -26,9 +26,16 @@ void buttonHover(float x, float y, float w, float h, int colour, int r) {
   } else {hover = false;}
 }
 
-//title font function (preset)
+//title font function (preset) (mostly used for page titles)
 void title(String str) {
   textAlign(CENTER);
   font(ChapR, height/15, 0);
   text(str, width/2, height/3.5);
+}
+
+//higher version of the title function (mostly used for graph/game titles)
+void titleHigher(String str) {
+    textAlign(CENTER);
+  font(ChapR, height/15, 0);
+  text(str, width/2, height/3.8);
 }

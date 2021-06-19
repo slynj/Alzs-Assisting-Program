@@ -176,20 +176,33 @@ float graphRectX;
 float graphRectY;
 float graphRectW;
 float graphRectH;
+float graphRectBY;  //bottom Y of the background rectangle (where graph is drawn on)
+float graphRectRX;  //right X of the background rectangel(where graph is drawn on)
 
 void scorePage() {
   graphRectX = width/20;
   graphRectY = height/6.7 + width/7;
   graphRectW = width - width/10;
   graphRectH = height-height/6.7 - width/5;
+  graphRectBY = graphRectY + graphRectH;
 
-  title("score");
-  
+  titleHigher("score");
+  font(AvenirI, height/40, #5A5244);
+  textAlign(CENTER, CENTER);
+  text("in percentage", width/2, height*0.3);
+
   fill(#B7ADA1);
   rect(graphRectX, graphRectY, graphRectW, graphRectH, 10);
 
-  importFile();
+  font(AvenirR, height/50, 0);
+  text("0", graphRectX - graphRectH/50, graphRectBY + graphRectH/50);
+  text("50", graphRectX - graphRectH/30, graphRectBY - graphRectH/2);
+  text("100", graphRectX - graphRectH/30, graphRectBY - graphRectH);
+  
+  fill(#4B463F);
+  text("%", graphRectX - graphRectH/12, graphRectBY - graphRectH/2);
 
+  drawGraph();
 }
 
 
@@ -217,12 +230,14 @@ void helpPage() {
 }
 
 
-void importFile() {
+void drawGraph() {
   BufferedReader reader = createReader("score.txt");
   String line = null;
-  float graphRectBY = graphRectY + graphRectH;
+
 
   try {
+    scoreData.add(0.);
+    timeData.add(0.);
     while ((line = reader.readLine()) != null) {
       String[] data = split(line, ",");
       scoreData.add(float(data[0]));
@@ -233,24 +248,25 @@ void importFile() {
   catch (IOException e) {
     e.printStackTrace();
   }
-  
+
   //stroke setup
   strokeWeight(3);
-  stroke(0);
+  stroke(255);
 
   float lineWidth = graphRectW/(scoreData.size()-1);
   float lineHeight = graphRectH/100;
-
-
-  //for (int i = 0; i < scoreData.size()-1; i++) {
-  //  line(i*lineWidth, scoreData.get(i), (i+1)*lineWidth, scoreData.get(i+1));
-    
-  //}
   
   for (int i = 0; i < scoreData.size()-1; i++) {
-    line(i*lineWidth+graphRectX, graphRectBY - (scoreData.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (scoreData.get(i+1)*lineHeight));
-    
+  line(i*lineWidth+graphRectX, graphRectBY - (scoreData.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (scoreData.get(i+1)*lineHeight));
   }
+
+  font(AvenirR, height/50, 0);
+  textAlign(CENTER, CENTER);
+  text(scoreData.size()/2, graphRectX + graphRectW/2, graphRectBY + graphRectH/30);
+  text(scoreData.size(), graphRectX + graphRectW, graphRectBY + graphRectH/30);
+  
+  fill(#4B463F);
+  text("trial #", width/2, graphRectBY + graphRectH/13);
 
   scoreData.clear();
   timeData.clear();

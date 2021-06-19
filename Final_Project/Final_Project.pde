@@ -59,7 +59,7 @@ void setup() {
 
   //fonts set up and import
   SDGothic = loadFont("AppleSDGothicNeo-Heavy-48.vlw");
-  SDLight = loadFont("AppleSDGothicNeo-Light-48.vlw");
+  AvenirR = loadFont("AppleSDGothicNeo-Light-48.vlw");
   AvenirUL = loadFont("AvenirNext-UltraLight-48.vlw");
   AvenirI = loadFont("AvenirNext-Italic-48.vlw");
   AvenirR = loadFont("AvenirNext-Regular-48.vlw");
