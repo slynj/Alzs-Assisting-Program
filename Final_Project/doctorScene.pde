@@ -180,37 +180,49 @@ float graphRectBY;  //bottom Y of the background rectangle (where graph is drawn
 float graphRectRX;  //right X of the background rectangel(where graph is drawn on)
 
 void scorePage() {
+  graphRect();
+  
+  graphTitle("score", "in percentage");
+
+  graph(scoreData);
+}
+
+
+
+void timePage() {
+  graphRect();
+  
+  graphTitle("time", "in minutes");
+  
+  graph(timeData);
+}
+
+void graphRect() {
   graphRectX = width/20;
   graphRectY = height/6.7 + width/7;
   graphRectW = width - width/10;
   graphRectH = height-height/6.7 - width/5;
   graphRectBY = graphRectY + graphRectH;
 
-  titleHigher("score");
-  font(AvenirI, height/40, #5A5244);
-  textAlign(CENTER, CENTER);
-  text("in percentage", width/2, height*0.3);
-
   fill(#B7ADA1);
   rect(graphRectX, graphRectY, graphRectW, graphRectH, 10);
+}
 
+void graphLabel(String half, String full, String sign) {
   font(AvenirR, height/50, 0);
-  text("0", graphRectX - graphRectH/50, graphRectBY + graphRectH/50);
-  text("50", graphRectX - graphRectH/30, graphRectBY - graphRectH/2);
-  text("100", graphRectX - graphRectH/30, graphRectBY - graphRectH);
+  text(half, graphRectX - graphRectH/30, graphRectBY - graphRectH/2);
+  text(full, graphRectX - graphRectH/30, graphRectBY - graphRectH);
   
   fill(#4B463F);
-  text("%", graphRectX - graphRectH/12, graphRectBY - graphRectH/2);
-
-  drawGraph();
+  text(sign, graphRectX - graphRectH/12, graphRectBY - graphRectH/2);
 }
 
-
-
-void timePage() {
-  title("time");
+void graphTitle(String title, String subtitle) {
+  titleHigher(title);
+  font(AvenirI, height/40, #5A5244);
+  textAlign(CENTER, CENTER);
+  text(subtitle, width/2, height*0.3);
 }
-
 
 
 void averagePage() {
@@ -230,7 +242,13 @@ void helpPage() {
 }
 
 
-void drawGraph() {
+
+void graph(ArrayList<Float> dataList) {
+  readFile();
+  drawGraph(dataList);
+} 
+
+void readFile() {
   BufferedReader reader = createReader("score.txt");
   String line = null;
 
@@ -248,26 +266,82 @@ void drawGraph() {
   catch (IOException e) {
     e.printStackTrace();
   }
+}
+
+
+
+void drawGraph(ArrayList<Float> dataList) {
 
   //stroke setup
   strokeWeight(3);
   stroke(255);
 
   float lineWidth = graphRectW/(scoreData.size()-1);
-  float lineHeight = graphRectH/100;
-  
-  for (int i = 0; i < scoreData.size()-1; i++) {
-  line(i*lineWidth+graphRectX, graphRectBY - (scoreData.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (scoreData.get(i+1)*lineHeight));
+  float lineHeight = 0;
+
+  if (dataList == scoreData) {
+    lineHeight = graphRectH/100;
+    graphLabel("50", "100", "%");
+  } else if (dataList == timeData) {
+    lineHeight = graphRectH/20;
+    graphLabel("10", "20", "(m)");
   }
 
   font(AvenirR, height/50, 0);
   textAlign(CENTER, CENTER);
-  text(scoreData.size()/2, graphRectX + graphRectW/2, graphRectBY + graphRectH/30);
-  text(scoreData.size(), graphRectX + graphRectW, graphRectBY + graphRectH/30);
-  
+  text("0", graphRectX - graphRectH/50, graphRectBY + graphRectH/50);
+  text((scoreData.size()-1)/2, graphRectX + graphRectW/2, graphRectBY + graphRectH/30);
+  text(scoreData.size()-1, graphRectX + graphRectW, graphRectBY + graphRectH/30);
+
   fill(#4B463F);
   text("trial #", width/2, graphRectBY + graphRectH/13);
+  
+  for (int i = 0; i < scoreData.size()-1; i++) {
+    line(i*lineWidth+graphRectX, graphRectBY - (dataList.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (dataList.get(i+1)*lineHeight));
+  }
 
   scoreData.clear();
   timeData.clear();
-} 
+}
+
+//void graph() {
+//  BufferedReader reader = createReader("score.txt");
+//  String line = null;
+
+
+//  try {
+//    scoreData.add(0.);
+//    timeData.add(0.);
+//    while ((line = reader.readLine()) != null) {
+//      String[] data = split(line, ",");
+//      scoreData.add(float(data[0]));
+//      timeData.add(float(data[1]));
+//    }
+//    reader.close();
+//  } 
+//  catch (IOException e) {
+//    e.printStackTrace();
+//  }
+
+//  //stroke setup
+//  strokeWeight(3);
+//  stroke(255);
+
+//  float lineWidth = graphRectW/(scoreData.size()-1);
+//  float lineHeight = graphRectH/100;
+
+//  for (int i = 0; i < scoreData.size()-1; i++) {
+//  line(i*lineWidth+graphRectX, graphRectBY - (scoreData.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (scoreData.get(i+1)*lineHeight));
+//  }
+
+//  font(AvenirR, height/50, 0);
+//  textAlign(CENTER, CENTER);
+//  text(scoreData.size()/2, graphRectX + graphRectW/2, graphRectBY + graphRectH/30);
+//  text(scoreData.size(), graphRectX + graphRectW, graphRectBY + graphRectH/30);
+
+//  fill(#4B463F);
+//  text("trial #", width/2, graphRectBY + graphRectH/13);
+
+//  scoreData.clear();
+//  timeData.clear();
+//} 

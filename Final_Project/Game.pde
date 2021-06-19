@@ -165,7 +165,7 @@ void pickGameAns() {
 void gameEnd() {
   //variable declaration
   float scorePer = (score/6.)*100;  //score in percentage
-  float time = (end - start)/1000;  //time it took to finish the game in seconds
+  float time = (end - start)/6000;  //time it took to finish the game in minutes
 
   //if game is ended (on the last question)
   if (gameOn == false) {
