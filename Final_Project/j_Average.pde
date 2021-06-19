@@ -36,8 +36,8 @@ void drawAvgText() {
   textAlign(CORNER, CENTER);
   text(avgS[0], width/2 - textWidth(avgS[0]), height/2.5);
   text(avgT[0], width/2 - textWidth(avgT[0]), height/1.5); 
-  text("points", width/2 + textWidth(avgS[1])*3.5, height/2.5);
-  text("minutes", width/2 + textWidth(avgT[1])*3.5, height/1.5);
+  text("percent", width/2 + textWidth(avgS[1])*3.5, height/2.5);
+  text("minutes", width/2 + textWidth(avgT[1])*5, height/1.5);
   
   font(SDLight, height/20, 0);
   text(avgS[1], width/2 + textWidth(avgS[1]), height/2.5);

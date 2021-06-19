@@ -1,4 +1,4 @@
-String menuState = "average";
+String menuState = "contact";
 
 
 void doctorScene() {
@@ -16,8 +16,8 @@ void doctorScene() {
     timePage();
   } else if (menuState == "average") {
     averagePage();
-  } else if (menuState == "table") {
-    tablePage();
+  } else if (menuState == "contact") {
+    contactPage();
   } else if (menuState == "help") {
     helpPage();
   }
@@ -110,7 +110,7 @@ void menuButton() {
   text("score", menuX + menuW/2, rectY);
   text("time", x1 + menuW/2, rectY);
   text("average", x2 + menuW/2, rectY);
-  text("table", x3 + menuW/2, rectY);
+  text("contact", x3 + menuW/2, rectY);
   text("help", x4 + menuW/2, rectY);
 
   //if mouse hovers, change text colour (header text)
@@ -135,9 +135,9 @@ void menuButton() {
       }
     } else if (mouseX > x3 && mouseX < x3 + menuW) {  //if table bttn is hovered,
       fill(0);  //change colour to balck
-      text("table", x3 + menuW/2, rectY);  //redraw the text
+      text("contact", x3 + menuW/2, rectY);  //redraw the text
       if (mousePressed == true) {  //if clicked,
-        menuState = "table";  //change menu state to table (change the screen)
+        menuState = "contact";  //change menu state to table (change the screen)
       }
     } else if (mouseX > x4 && mouseX < x4 + menuW) {  //if help bttn is hovered,
       fill(0);  //change colour to balck
@@ -203,8 +203,9 @@ void averagePage() {
 
 
 
-void tablePage() {
-  title("table");
+void contactPage() {
+  //titleHigher("Need More Info?");
+  contactGraphic();
 }
 
 

@@ -60,6 +60,9 @@ PImage Iron;
 PImage Mixer;
 PImage Fridge;
 PImage Doctor;
+PImage Asc;
+PImage Adi;
+PImage As;
 
 
 //determind if user clicked or not
@@ -106,6 +109,9 @@ void setup() {
   Mixer = loadImage("mixer.png");
   Fridge = loadImage("fridge.png");
   Doctor = loadImage("doctor.png");
+  Asc = loadImage("asc.png");
+  Adi = loadImage("adi.png");
+  As = loadImage("as.png");
 
   //for high quality text 
   pixelDensity(displayDensity());
@@ -114,7 +120,7 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "patient";  //program state is login
+  program = "doctor";  //program state is login
 }
 
 void draw() {    

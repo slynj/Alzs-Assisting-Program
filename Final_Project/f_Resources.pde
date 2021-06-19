@@ -1,4 +1,4 @@
-//when contact is clicked
+//when resources bttn is clicked
 void clickResources() {
   //x and y coordinates for the image buttons
   float img2X = width*0.39;
