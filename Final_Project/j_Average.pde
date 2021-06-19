@@ -39,6 +39,8 @@ void drawAvgText() {
   text("percent", width/2 + textWidth(avgS[1])*3.5, height/2.5);
   text("minutes", width/2 + textWidth(avgT[1])*5, height/1.5);
   
+  println(scoreAvg, timeAvg);
+  
   font(SDLight, height/20, 0);
   text(avgS[1], width/2 + textWidth(avgS[1]), height/2.5);
   text(avgT[1], width/2 + textWidth(avgT[1]), height/1.5);

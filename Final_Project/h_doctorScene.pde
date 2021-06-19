@@ -190,7 +190,7 @@ void timePage() {    //all functions used written in the graph tab
 }
 
 
-
+//shows the aver time and score
 void averagePage() {
   readFile();  //to get scoreAvg & timeAvg; (because the getAvg(written in Average tab) is inside the readFile function)
   
@@ -202,10 +202,9 @@ void averagePage() {
 
 
 
-
+//shows the buttons to external links
 void contactPage() {
-  //titleHigher("Need More Info?");
-  contactGraphic();
+  contactGraphic();    //draws text, buttons & collision detection
 }
 
 

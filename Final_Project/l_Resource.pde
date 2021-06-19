@@ -1,3 +1,5 @@
+
+//draws title, buttons on the contact page
 void contactGraphic() {
   //x and y coordinates for the image buttons
   float img2X = width*0.39;
@@ -6,7 +8,7 @@ void contactGraphic() {
   float baseImgY = height/2.5;
 
   //title text
-  titleHigher("need more info?");
+  title("need more info?");
 
   //image settings
   imageMode(CORNER);  //coordinates from the image centre
@@ -17,15 +19,15 @@ void contactGraphic() {
   //button #1 (colouring page)
   String ascLink = "https://alzheimer.ca/en";  //link to the Alzheimer Society of Canada website
   contactButton(img1X, ascLink);  //hover function; collision detectoin and darkens the button(function at the bottom)
-  image(Asc, img1X, baseImgY);  //asc image
+  image(Asc, img1X, baseImgY);  //asc(Alzheimer Society of Canada) image
 
   String adiLink = "https://www.alzint.org/";  //link to the Alzheimer Disease International website
   contactButton(img2X, adiLink);
-  image(Adi, img2X, baseImgY);  //colouring image
+  image(Adi, img2X, baseImgY);  //adi(Alzheimer Disease International) image
 
   String asLink = "https://www.alz.org/";  //link to the alzheimer's association website
   contactButton(img3X, asLink);
-  image(As, img3X, baseImgY);  //puzzle image
+  image(As, img3X, baseImgY);  //as(alzheimer's association) image
 
   font(SDLight, height/35, 0);
   //titles

@@ -28,6 +28,9 @@ void readFile() {
 
   try {
     //add 0 to both arrays to have a starting value of 0
+    scoreData.clear();
+    timeData.clear();
+    
     scoreData.add(0.);  
     timeData.add(0.);
     while ((line = reader.readLine()) != null) {  //
