@@ -1,6 +1,13 @@
 //when game is clicked
 void clickGame() {
   title("Excercise You Brain! Play Games");  //title
+  font(SDLight, height/30, #50483C);
+  text("Research proves that brain-stimulating activities"
+  + "and habits can help stave off Alzheimer's.\n\n Not surprisingly,"
+  + "the brain can benefit from a good workout just as the body does.\n\n" 
+  + "Engaging in mentally stimulating activities such as reading, writing"
+  + "and playing games can improve brain health.", width/2, height/2.5);
+  
 
   //buttons x, y, and side
   float bttnS = height/4;  //bttn side length
