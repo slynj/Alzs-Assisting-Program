@@ -1,4 +1,4 @@
-String menuState = "score";
+String menuState = "average";
 
 
 void doctorScene() {
@@ -6,7 +6,7 @@ void doctorScene() {
   signoutButton();    //button for signout (goes back to login scene)
   menuButton();     //header buttons (home, assesment, game, contact, help) hover feature + changes header state
   backgroundC();       //bakcground (ivory rect)
-  
+
   //run each function when the menuState is changed by clicking on the bttns
   if (menuState == "init") {
     startPage(Doctor);
@@ -169,25 +169,11 @@ void startPage(PImage image) {
   image(Welcome, width/2, height/3.5);  //draw image
 }
 
-//array lists that holds the data of the score / time
-ArrayList<Float> scoreData = new ArrayList<Float>();
-ArrayList<Float> timeData = new ArrayList<Float>();
-//data array that holds both score and thime (read by line from the txt file)
-float[] data;
-
-//graph rect(where graph is drawn on) x, y, w, h, bottom y, right x
-float graphRectX;
-float graphRectY;
-float graphRectW;
-float graphRectH;
-float graphRectBY;  //bottom Y of the background rectangle (where graph is drawn on)
-float graphRectRX;  //right X of the background rectangel(where graph is drawn on)
-
 
 //shows the graph of the score
 void scorePage() {    //all functions used written in the graph tab
   graphRect();  //draws the rectangle the graph is drawn on
-  
+
   graphTitle("score", "in percentage");  //draws the title & subtitle text
 
   graph(scoreData);  //draw the graph with floats from scoreData ArrayList
@@ -197,18 +183,23 @@ void scorePage() {    //all functions used written in the graph tab
 //shows the graph of the time
 void timePage() {    //all functions used written in the graph tab
   graphRect();  //draws the rectangle the graph is drawn on
-  
+
   graphTitle("time", "in minutes");  //draws the title & subtitle text
-  
+
   graph(timeData);  //draw the graph with floats from timeData ArrayList
 }
 
 
 
-
 void averagePage() {
-  titleHigher("average");
+  readFile();  //to get scoreAvg & timeAvg; (because the getAvg(written in Average tab) is inside the readFile function)
+  
+  drawAvgText();  //draws the texts and title on the page
+  
+  graphBttn();  //draws the bttn
+ 
 }
+
 
 
 

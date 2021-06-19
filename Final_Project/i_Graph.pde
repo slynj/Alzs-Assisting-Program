@@ -1,4 +1,18 @@
 
+//array lists that holds the data of the score / time
+ArrayList<Float> scoreData = new ArrayList<Float>();
+ArrayList<Float> timeData = new ArrayList<Float>();
+//data array that holds both score and thime (read by line from the txt file)
+float[] data;
+
+//graph rect(where graph is drawn on) x, y, w, h, bottom y, right x
+float graphRectX;
+float graphRectY;
+float graphRectW;
+float graphRectH;
+float graphRectBY;  //bottom Y of the background rectangle (where graph is drawn on)
+float graphRectRX;  //right X of the background rectangel(where graph is drawn on)
+
 //reads the file and draws the graph with the ArrayList given by the parmeter
 void graph(ArrayList<Float> dataList) {
   readFile();  //reads the txt file
@@ -26,6 +40,7 @@ void readFile() {
   catch (IOException e) {  //if there's an error, trace it
     e.printStackTrace();
   }
+  getAvg();  //get the average now that the ArrayLists own value (for the average page)
 }
 
 
@@ -63,6 +78,8 @@ void drawGraph(ArrayList<Float> dataList) {
   for (int i = 0; i < scoreData.size()-1; i++) {  //repeat until i is 1 less then the ArrayList size (because the x2 y2 draws the point of i+1)
     line(i*lineWidth+graphRectX, graphRectBY - (dataList.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (dataList.get(i+1)*lineHeight));
   }
+  
+  
   
   //clear all the values in the ArrayLists to prevent calculations with ArrayLists changing every frame
   scoreData.clear();
