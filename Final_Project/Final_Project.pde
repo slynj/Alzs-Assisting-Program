@@ -49,6 +49,16 @@ PImage Pear;
 PImage Pineapple;
 PImage Strawberry;
 PImage Watermelon;
+PImage Shoes;
+PImage Pencil;
+PImage Lamp;
+PImage Vacum;
+PImage Ac;
+PImage Phone;
+PImage Rice;
+PImage Iron;
+PImage Mixer;
+PImage Fridge;
 PImage Doctor;
 
 
@@ -85,6 +95,16 @@ void setup() {
   Pineapple = loadImage("pineapple.png");
   Strawberry = loadImage("strawberry.png");
   Watermelon = loadImage("watermelon.png");
+  Shoes = loadImage("shoes.png");
+  Pencil = loadImage("pencil.png");
+  Lamp = loadImage("lamp.png");
+  Vacum = loadImage("vacum.png");
+  Ac = loadImage("ac.png");
+  Phone = loadImage("phone.png");
+  Rice = loadImage("rice.png");
+  Iron = loadImage("iron.png");
+  Mixer = loadImage("mixer.png");
+  Fridge = loadImage("fridge.png");
   Doctor = loadImage("doctor.png");
 
   //for high quality text 
@@ -94,7 +114,7 @@ void setup() {
   textboxSetup();
 
   //variable assigning
-  program = "doctor";  //program state is login
+  program = "patient";  //program state is login
 }
 
 void draw() {    

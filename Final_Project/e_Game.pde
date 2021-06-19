@@ -51,6 +51,17 @@ void game() {
   String[] pineapple = {"fruit", "purple", "yellow", "round"};
   String[] strawberry = {"red", "seed", "leaf", "vegetable"};
   String[] watermelon = {"red", "square", "seed", "green"};
+  String[] shoes = {"eye", "feet", "face", "ears"};
+  String[] pencil = {"write", "fly", "sleep", "eat"};
+  String[] lamp = {"paper", "book", "light", "plastic"};
+  String[] vacum = {"fan", "dog", "timer", "dust"};
+  String[] ac = {"cold", "hot", "warm", "clear"};
+  String[] phone = {"roll", "call", "punch", "kick"};
+  String[] rice = {"food", "rock", "sky", "grass"};
+  String[] iron = {"cold", "hot", "bug", "leg"};
+  String[] mixer = {"throw", "pull", "push", "mix"};
+  String[] fridge = {"hot", "food", "oven", "green"};
+
 
   //the questions that changes when the gameState changes
   if (gameState == "pickGame0") {    //question #1
@@ -66,9 +77,29 @@ void game() {
     pickGame(Strawberry, "unrelated", strawberry, 3);  //draw the buttons, image, check the answer
   } else if (gameState.equals ("pickGame5")) {    //question #6
     pickGame(Watermelon, "unrelated", watermelon, 1);  //draw the buttons, image, check the answer
+  } else if (gameState.equals ("pickGame6")) {
+    pickGame(Shoes, "related", shoes, 1);
+  } else if (gameState.equals ("pickGame7")) {
+    pickGame(Pencil, "related", pencil, 0);
+  } else if (gameState.equals ("pickGame8")) {
+    pickGame(Lamp, "related", lamp, 2);
+  } else if (gameState.equals ("pickGame9")) {
+    pickGame(Vacum, "related", vacum, 3);
+  } else if (gameState.equals ("pickGame10")) {
+    pickGame(Ac, "related", ac, 0);
+  } else if (gameState.equals ("pickGame11")) {
+    pickGame(Phone, "related", phone, 1);
+  } else if (gameState.equals ("pickGame12")) {
+    pickGame(Rice, "related", rice, 0);
+  } else if (gameState.equals ("pickGame13")) {
+    pickGame(Iron, "related", iron, 1);
+  } else if (gameState.equals ("pickGame14")) {
+    pickGame(Mixer, "related", mixer, 3);
+  } else if (gameState.equals ("pickGame15")) {
+    pickGame(Fridge, "related", fridge, 2);
     end = millis();     //get the time ended(to calculated the time it took later)
     gameOn = false;    //last question, so it changes to game on to false, getting all the data and putting it in to the file
-  } else if (gameState.equals ("pickGame6")) {    //question #7
+  } else if (gameState.equals ("pickGame16")) {    //question #7
     gameEnd();
   }
 }
@@ -164,7 +195,7 @@ void pickGameAns() {
 //graphics and buttons to show when the game is ended (+ add data to the file)
 void gameEnd() {
   //variable declaration
-  float scorePer = (score/6.)*100;  //score in percentage
+  float scorePer = (score/16.)*100;  //score in percentage
   float time = (end - start)/6000;  //time it took to finish the game in minutes
 
   //if game is ended (on the last question)
