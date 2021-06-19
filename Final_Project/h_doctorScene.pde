@@ -6,7 +6,8 @@ void doctorScene() {
   signoutButton();    //button for signout (goes back to login scene)
   menuButton();     //header buttons (home, assesment, game, contact, help) hover feature + changes header state
   backgroundC();       //bakcground (ivory rect)
-
+  
+  //run each function when the menuState is changed by clicking on the bttns
   if (menuState == "init") {
     startPage(Doctor);
   } else if (menuState == "score") {
@@ -35,7 +36,7 @@ void doctorInit() {
     }
   }
 
-  basicGraphic();
+  basicGraphic();  //draws the  backgroundrectnagles
 }
 
 //draws the logo
@@ -114,35 +115,35 @@ void menuButton() {
 
   //if mouse hovers, change text colour (header text)
   if (mouseY > menuY && mouseY < menuY + menuH) {
-    if (mouseX > menuX && mouseX < menuX + menuW) {
+    if (mouseX > menuX && mouseX < menuX + menuW) {  //if score bttn is hovered,
       fill(0);
       text("score", menuX + menuW/2, rectY);
-      if (mousePressed == true) {
-        menuState = "score";
+      if (mousePressed == true) {    //if clicked,
+        menuState = "score";  //change menu state to score (change the screen)
       }
-    } else if (mouseX > x1 && mouseX < x1 + menuW) {
-      fill(0);
-      text("time", x1 + menuW/2, rectY);
-      if (mousePressed == true) {
-        menuState = "time";
+    } else if (mouseX > x1 && mouseX < x1 + menuW) {  //if time bttn is hovered,
+      fill(0);  //change colour to balck
+      text("time", x1 + menuW/2, rectY);  //redraw the text
+      if (mousePressed == true) {  //if clicked,
+        menuState = "time";  //change menu state to time (change the screen)
       }
-    } else if (mouseX > x2 && mouseX < x2 + menuW) {
-      fill(0);
-      text("average", x2 + menuW/2, rectY);
-      if (mousePressed == true) {
-        menuState = "average";
+    } else if (mouseX > x2 && mouseX < x2 + menuW) {  //if average bttn is hovered,
+      fill(0);  //change colour to balck
+      text("average", x2 + menuW/2, rectY);  //redraw the text
+      if (mousePressed == true) {  //if clicked,
+        menuState = "average";    //change menu state to average (change the screen)
       }
-    } else if (mouseX > x3 && mouseX < x3 + menuW) {
-      fill(0);
-      text("table", x3 + menuW/2, rectY);
-      if (mousePressed == true) {
-        menuState = "table";
+    } else if (mouseX > x3 && mouseX < x3 + menuW) {  //if table bttn is hovered,
+      fill(0);  //change colour to balck
+      text("table", x3 + menuW/2, rectY);  //redraw the text
+      if (mousePressed == true) {  //if clicked,
+        menuState = "table";  //change menu state to table (change the screen)
       }
-    } else if (mouseX > x4 && mouseX < x4 + menuW) {
-      fill(0);
-      text("help", x4 + menuW/2, rectY);
-      if (mousePressed == true) {
-        menuState = "help";
+    } else if (mouseX > x4 && mouseX < x4 + menuW) {  //if help bttn is hovered,
+      fill(0);  //change colour to balck
+      text("help", x4 + menuW/2, rectY);  //redraw the text
+      if (mousePressed == true) {  //if clicked,
+        menuState = "help";  //change menu state to help (change the screen)
       }
     }
   }
@@ -154,6 +155,7 @@ void backgroundC() {
   fill(#efece5);
   rect(width/100, height/6.7 + width/100, width - width/50, height-height/6.7 - width/50, 5);
 }
+
 
 //when user first logs in + when logo is clicked, the welcome image + 1 image(chosen through the parmeter) is shown
 void startPage(PImage image) {
@@ -167,11 +169,13 @@ void startPage(PImage image) {
   image(Welcome, width/2, height/3.5);  //draw image
 }
 
-
+//array lists that holds the data of the score / time
 ArrayList<Float> scoreData = new ArrayList<Float>();
 ArrayList<Float> timeData = new ArrayList<Float>();
+//data array that holds both score and thime (read by line from the txt file)
 float[] data;
 
+//graph rect(where graph is drawn on) x, y, w, h, bottom y, right x
 float graphRectX;
 float graphRectY;
 float graphRectW;
@@ -179,54 +183,31 @@ float graphRectH;
 float graphRectBY;  //bottom Y of the background rectangle (where graph is drawn on)
 float graphRectRX;  //right X of the background rectangel(where graph is drawn on)
 
-void scorePage() {
-  graphRect();
+
+//shows the graph of the score
+void scorePage() {    //all functions used written in the graph tab
+  graphRect();  //draws the rectangle the graph is drawn on
   
-  graphTitle("score", "in percentage");
+  graphTitle("score", "in percentage");  //draws the title & subtitle text
 
-  graph(scoreData);
+  graph(scoreData);  //draw the graph with floats from scoreData ArrayList
 }
 
 
-
-void timePage() {
-  graphRect();
+//shows the graph of the time
+void timePage() {    //all functions used written in the graph tab
+  graphRect();  //draws the rectangle the graph is drawn on
   
-  graphTitle("time", "in minutes");
+  graphTitle("time", "in minutes");  //draws the title & subtitle text
   
-  graph(timeData);
+  graph(timeData);  //draw the graph with floats from timeData ArrayList
 }
 
-void graphRect() {
-  graphRectX = width/20;
-  graphRectY = height/6.7 + width/7;
-  graphRectW = width - width/10;
-  graphRectH = height-height/6.7 - width/5;
-  graphRectBY = graphRectY + graphRectH;
 
-  fill(#B7ADA1);
-  rect(graphRectX, graphRectY, graphRectW, graphRectH, 10);
-}
-
-void graphLabel(String half, String full, String sign) {
-  font(AvenirR, height/50, 0);
-  text(half, graphRectX - graphRectH/30, graphRectBY - graphRectH/2);
-  text(full, graphRectX - graphRectH/30, graphRectBY - graphRectH);
-  
-  fill(#4B463F);
-  text(sign, graphRectX - graphRectH/12, graphRectBY - graphRectH/2);
-}
-
-void graphTitle(String title, String subtitle) {
-  titleHigher(title);
-  font(AvenirI, height/40, #5A5244);
-  textAlign(CENTER, CENTER);
-  text(subtitle, width/2, height*0.3);
-}
 
 
 void averagePage() {
-  title("average");
+  titleHigher("average");
 }
 
 
@@ -240,108 +221,3 @@ void tablePage() {
 void helpPage() {
   title("help");
 }
-
-
-
-void graph(ArrayList<Float> dataList) {
-  readFile();
-  drawGraph(dataList);
-} 
-
-void readFile() {
-  BufferedReader reader = createReader("score.txt");
-  String line = null;
-
-
-  try {
-    scoreData.add(0.);
-    timeData.add(0.);
-    while ((line = reader.readLine()) != null) {
-      String[] data = split(line, ",");
-      scoreData.add(float(data[0]));
-      timeData.add(float(data[1]));
-    }
-    reader.close();
-  } 
-  catch (IOException e) {
-    e.printStackTrace();
-  }
-}
-
-
-
-void drawGraph(ArrayList<Float> dataList) {
-
-  //stroke setup
-  strokeWeight(3);
-  stroke(255);
-
-  float lineWidth = graphRectW/(scoreData.size()-1);
-  float lineHeight = 0;
-
-  if (dataList == scoreData) {
-    lineHeight = graphRectH/100;
-    graphLabel("50", "100", "%");
-  } else if (dataList == timeData) {
-    lineHeight = graphRectH/20;
-    graphLabel("10", "20", "(m)");
-  }
-
-  font(AvenirR, height/50, 0);
-  textAlign(CENTER, CENTER);
-  text("0", graphRectX - graphRectH/50, graphRectBY + graphRectH/50);
-  text((scoreData.size()-1)/2, graphRectX + graphRectW/2, graphRectBY + graphRectH/30);
-  text(scoreData.size()-1, graphRectX + graphRectW, graphRectBY + graphRectH/30);
-
-  fill(#4B463F);
-  text("trial #", width/2, graphRectBY + graphRectH/13);
-  
-  for (int i = 0; i < scoreData.size()-1; i++) {
-    line(i*lineWidth+graphRectX, graphRectBY - (dataList.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (dataList.get(i+1)*lineHeight));
-  }
-
-  scoreData.clear();
-  timeData.clear();
-}
-
-//void graph() {
-//  BufferedReader reader = createReader("score.txt");
-//  String line = null;
-
-
-//  try {
-//    scoreData.add(0.);
-//    timeData.add(0.);
-//    while ((line = reader.readLine()) != null) {
-//      String[] data = split(line, ",");
-//      scoreData.add(float(data[0]));
-//      timeData.add(float(data[1]));
-//    }
-//    reader.close();
-//  } 
-//  catch (IOException e) {
-//    e.printStackTrace();
-//  }
-
-//  //stroke setup
-//  strokeWeight(3);
-//  stroke(255);
-
-//  float lineWidth = graphRectW/(scoreData.size()-1);
-//  float lineHeight = graphRectH/100;
-
-//  for (int i = 0; i < scoreData.size()-1; i++) {
-//  line(i*lineWidth+graphRectX, graphRectBY - (scoreData.get(i)*lineHeight), (i+1)*lineWidth + graphRectX, graphRectBY - (scoreData.get(i+1)*lineHeight));
-//  }
-
-//  font(AvenirR, height/50, 0);
-//  textAlign(CENTER, CENTER);
-//  text(scoreData.size()/2, graphRectX + graphRectW/2, graphRectBY + graphRectH/30);
-//  text(scoreData.size(), graphRectX + graphRectW, graphRectBY + graphRectH/30);
-
-//  fill(#4B463F);
-//  text("trial #", width/2, graphRectBY + graphRectH/13);
-
-//  scoreData.clear();
-//  timeData.clear();
-//} 

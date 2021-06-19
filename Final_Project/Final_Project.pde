@@ -20,8 +20,11 @@
  
  //*/
 
+//PUBLIC VARIABLES DECLARATION
+
 //prgram state
 String program;
+
 //fonts
 PFont SDGothic;
 PFont AvenirUL;
@@ -30,6 +33,7 @@ PFont AvenirI;
 PFont OratorR;
 PFont SDLight;
 PFont ChapR;
+
 //images
 PImage Grandpa;
 PImage Hospital;
@@ -59,7 +63,7 @@ void setup() {
 
   //fonts set up and import
   SDGothic = loadFont("AppleSDGothicNeo-Heavy-48.vlw");
-  AvenirR = loadFont("AppleSDGothicNeo-Light-48.vlw");
+  SDLight = loadFont("AppleSDGothicNeo-Light-48.vlw");
   AvenirUL = loadFont("AvenirNext-UltraLight-48.vlw");
   AvenirI = loadFont("AvenirNext-Italic-48.vlw");
   AvenirR = loadFont("AvenirNext-Regular-48.vlw");
@@ -105,17 +109,10 @@ void draw() {
 }
 
 void mousePressed() {
-  //always running
-  //click = true;
-
   //only if its login state
   if (program == "login") {
     for (TEXTBOX t : textboxes) {
       t.PRESSED(mouseX, mouseY);
     }
   }
-}
-
-void mouseReleased() {
-  click = false;
 }

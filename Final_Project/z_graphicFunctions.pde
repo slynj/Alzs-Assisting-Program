@@ -7,6 +7,9 @@ void font(PFont s, float f, int colour) {
   textFont(s);  //font kind
   textSize(f);  //size
   fill(colour);  //colour
+  
+  //if (s == null) {
+  //}
 }
 
 //hover function (takes x, y, w, h, colour when hovered, and corner radius)
