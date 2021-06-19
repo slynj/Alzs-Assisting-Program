@@ -41,6 +41,7 @@
     - login page with 2 sets of id/password that leads to the main page of alz's
     - those 2 different id/password leads the user to distinct pages: doctor and patient page
     - logout button that brings the user back to "login" state
+    - if not correct id or password, it gives a message to try again
 2. Hover
     - hover feature for all of the buttons to better the user interaction and also to make sure users know it is a button
 3. State
